@@ -1,0 +1,10 @@
+[user]
+	email = andreas.kohn@gmail.com
+	name = Andreas Kohn
+[core]
+	editor = vi
+[alias]
+	ci = commit -v
+	st = status
+	co = checkout
+	out = log -p
