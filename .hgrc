@@ -1,0 +1,46 @@
+[ui]
+username = Andreas Kohn <andreas.kohn@gmail.com>
+merge = meld
+style=/home/andreas/hgstyle
+#editor=hgeditor
+
+[web]
+# We should do some auth stuff eventually
+allow_push = *
+allow_archive = bz2 zip gz
+description = Toy repositories (push allowed for anyone)
+ipv6 = true
+
+[extensions]
+hgext.hgk =
+# record = 
+transplant = 
+hgext.rebase = 
+hgext.mq =
+hgext.fetch =
+hgext.extdiff = 
+hgext.graphlog = 
+mercurial_keyring = 
+
+# careful with this one, may produce odd errors.
+# It seems to produce a lot of hanging processes
+# inotify =
+
+[diff]
+git=1
+showfunc=1
+
+[extdiff]
+cmd.cdiff       = diff
+opts.cdiff       = -rNp --side-by-side
+
+
+[defaults]
+qimport = --git
+qrefresh = --git
+
+# See http://stackoverflow.com/questions/2584407/how-to-save-username-and-password-with-mercurial
+[auth]
+bb.prefix = https://bitbucket.org/ankon/
+bb.username = ankon
+# bb.password = 
