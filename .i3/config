@@ -190,3 +190,4 @@ exec --no-startup-id ~/.dropbox-dist/dropboxd
 # If this one fails: make sure hostip.info has at least a city accuracy!
 exec --no-startup-id redshift-gtk
 exec --no-startup-id hipchat
+exec --no-startup-id skype
