@@ -1,0 +1,32 @@
+#!/bin/sh
+
+# GTK3 looks really bad with a non-default theme
+# export SWT_GTK3=1
+# In 4.4M3 we need to explicitly disable GTK+ 3 support
+# Unfortunately in 4.4M2 the value is ignored, so ...
+# 4.4M4 still doesn't allow proper GPE installation
+# 4.4M5 still doesn't allow proper GPE installation
+# - modules/gpe-3.5.1-patched-site has the dependencies adjusted to allow for installation
+
+# GWT Plugin doesn't install in 4.4M3+, so for now use 4.4M2.
+if [ -z "${ECLIPSE_VERSION}" ]; then
+	ECLIPSE_VERSION=4.4M6
+fi
+
+case "${ECLIPSE_VERSION}" in
+	4.4M2)
+		;;
+	4.4M3|4.4M4|4.4M5|4.4M6)
+		export SWT_GTK3=0
+		;;
+	*)
+		;;
+esac
+
+if [ -n "${ECLIPSE_VERSION}" ]; then
+	ECLIPSE_HOME=$HOME/modules/eclipse-${ECLIPSE_VERSION}
+else
+	ECLIPSE_HOME=$HOME/modules/eclipse
+fi
+
+exec ${ECLIPSE_HOME}/eclipse "$@"

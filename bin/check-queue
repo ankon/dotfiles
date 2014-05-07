@@ -1,0 +1,98 @@
+#!/bin/sh
+# Verify the full patch queue
+
+restore_state=yes
+clean_repository=no
+
+before=`hg qtop`
+if [ "$before" = "no patches applied" ]; then
+	before=
+fi
+
+# The command to run, should return usual error codes for success/failure.
+cmd="mvn clean verify"
+
+while [ $# -gt 0 ]; do
+	case "$1" in
+	--all)
+		hg qpop -a
+		# check all
+		patches=`hg qunap`
+		;;
+	--until)
+		# check current up to and including the one given as argument
+		restore_state=no
+		patches=$before
+		for p in `hg qunap`; do
+			patches="$patches $p"
+			if [ "$p" = "$2" ]; then
+				break
+			fi
+		done
+		shift
+		;;
+	--test)
+		cmd=$2
+		shift
+		;;
+	--clean-repository)
+		clean_repository=yes
+		;;
+	esac
+	shift
+done
+
+if [ -z "$patches" ]; then
+	# check current one and all unapplied
+	patches="$before `hg qunap`"
+fi
+
+log=check-queue.$$
+repository=check-queue.$$.repository
+failure=
+for f in $patches; do 
+	printf ">>> Starting: $f"
+	if hg qgoto $f >$log 2>&1; then
+		printf "\r>>> Patched: $f                       "
+	else 
+		printf "\r>>> FAILED PATCH: $f                  \n"
+		failure=$f
+		break
+	fi
+
+	if [ "${clean_repository}" = "yes" ]; then
+		real_cmd="$cmd -Dmaven.repo.local=${repository}"
+		rm -rf ${repository}
+	else
+		real_cmd="$cmd"
+	fi
+	
+	if $real_cmd >$log 2>&1; then
+		printf "\r>>> Passed: $f                       \n"
+	else 
+		printf "\r>>> FAILED VERIFY: $f                \n"
+		failure=$f
+		break
+	fi
+done
+if [ -z "$failure" ]; then
+	if [ "$restore_state" = "yes" ]; then
+		if [ -z "$before" ]; then
+			hg qpop -a
+		else
+			hg qgoto $before
+		fi
+	fi
+else
+	cat $log
+	if [ -z "$before" ]; then
+		echo "Stopped, old state was without patches, now at $f"
+	else
+		echo "Stopped, old state was $before, now at $f"
+	fi
+fi
+rm -f $log
+if [ "${clean_repository}" = "yes" ]; then
+	rm -rf ${repository}
+fi
+
