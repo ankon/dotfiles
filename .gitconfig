@@ -3,8 +3,22 @@
 	name = Andreas Kohn
 [core]
 	editor = vi
+	pager = cat
+	whitespace = trailing-space,space-before-tab,tabwidth=4
+[diff]
+	renames = true
+	algorithm = histogram
+	compactionHeuristic = true
 [alias]
 	ci = commit -v
 	st = status
 	co = checkout
-	out = log -p
+	out = log --oneline @{u}..
+	glog = log --graph --oneline --all
+	up = pull --ff-only
+[color]
+	ui = auto
+[push]
+	default = simple
+[format]
+	pretty = oneline
