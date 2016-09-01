@@ -9,6 +9,7 @@
 	renames = true
 	algorithm = histogram
 	compactionHeuristic = true
+	submodule = log
 [alias]
 	ci = commit -v
 	st = status
