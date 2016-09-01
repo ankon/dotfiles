@@ -21,5 +21,7 @@
 	ui = auto
 [push]
 	default = simple
+[url "https://github.com/Collaborne"]
+	insteadOf = git://github.com/Collaborne
 [format]
 	pretty = oneline
