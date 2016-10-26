@@ -1,6 +1,7 @@
 [user]
 	email = andreas.kohn@gmail.com
 	name = Andreas Kohn
+	signingkey = 66E99F92
 [core]
 	editor = vi
 	pager = cat
@@ -21,7 +22,16 @@
 	ui = auto
 [push]
 	default = simple
-[url "https://github.com/Collaborne"]
-	insteadOf = git://github.com/Collaborne
+	followTags = true
 [format]
 	pretty = oneline
+[status]
+	submodulesummary = 1
+[url "https://github.com/Collaborne"]
+	insteadOf = git://github.com/Collaborne
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/bin/gpg2
+[tag]
+	forceSignAnnotated = true
