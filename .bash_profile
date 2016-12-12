@@ -17,11 +17,11 @@ fi
 
 # - Add the kubectl context
 find_kubectl_context() {
-	kubectl_context = `kubectl config current-context`
+	kubectl_context=`kubectl config current-context`
 	if [ -z "${kubectl_context}" ]; then
 		kubectl_context_formatted=
 	else
-		kubectl_context_formatted="[${context}] "
+		kubectl_context_formatted="[${kubectl_context}] "
 	fi
 }
 PROMPT_COMMAND="find_kubectl_context; $PROMPT_COMMAND"
