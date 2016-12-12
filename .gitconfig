@@ -18,6 +18,7 @@
 	out = log --oneline @{u}..
 	glog = log --graph --oneline --all
 	up = pull --ff-only
+	tip = log --oneline HEAD^..HEAD
 [color]
 	ui = auto
 [push]
