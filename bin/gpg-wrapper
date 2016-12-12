@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo "Waiting for GPG configuration" >&2
+while true; do
+	if [ -f $HOME/.gnupg/secring.gpg ]; then
+		break
+	fi
+	sleep 1
+done
+
+exec /usr/bin/gpg2 "$@"
+
