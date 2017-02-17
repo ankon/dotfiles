@@ -36,3 +36,5 @@
 	program = gpg-wrapper
 [tag]
 	forceSignAnnotated = true
+[rebase]
+	autostash = true
