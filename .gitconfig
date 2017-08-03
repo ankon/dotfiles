@@ -38,3 +38,5 @@
 	forceSignAnnotated = true
 [rebase]
 	autostash = true
+[rerere]
+	enabled = true
