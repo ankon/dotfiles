@@ -16,7 +16,7 @@
 	st = status
 	co = checkout
 	out = log --oneline @{u}..
-	glog = log --graph --oneline --all
+	glog = log --graph --oneline --decorate --all
 	up = pull --ff-only
 	tip = log --oneline HEAD^..HEAD
 [color]
