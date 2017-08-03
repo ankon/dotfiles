@@ -22,7 +22,11 @@ find_kubectl_context() {
 	if [ -z "${kubectl_context}" ]; then
 		kubectl_context_formatted=
 	else
-		kubectl_context_formatted="[${kubectl_context}] "
+		if [ "${kubectl_context}" = "minikube" ]; then
+			kubectl_context_formatted="[${kubectl_context}] "
+		else
+			kubectl_context_formatted="[\033\[31m${kubectl_context}\033\[0m] "
+		fi	
 	fi
 }
 PROMPT_COMMAND="find_kubectl_context; $PROMPT_COMMAND"
