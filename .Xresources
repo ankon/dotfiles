@@ -1,0 +1,29 @@
+urxvt*foreground: light gray
+urxvt*background: black
+urxvt*scrollBar: false
+urxvt*scrollBar_right: false
+urxvt*font: xft:bitstream vera sans mono:size=10:antialias=true
+urxvt*boldFont: xft:bitstream vera sans mono:bold:size=10:antialias=true
+urxvt*loginShell: true
+urxvt*scrollTtyOutput: false
+urxvt*scrollWithBuffer: true
+urxvt*scrollTtyKeypress: true
+urxvt*saveLines: 100000
+
+urxvt*depth: 32
+urxvt*background: rgba:0000/0000/0200/c800
+
+urxvt256c*foreground: light gray
+urxvt256c*background: black
+urxvt256c*scrollBar: false
+urxvt256c*scrollBar_right: false
+urxvt256c*font: xft:bitstream vera sans mono:size=10:antialias=true
+urxvt256c*boldFont: xft:bitstream vera sans mono:bold:size=10:antialias=true
+urxvt256c*loginShell: true
+urxvt256c*scrollTtyOutput: false
+urxvt256c*scrollWithBuffer: true
+urxvt256c*scrollTtyKeypress: true
+urxvt256c*saveLines: 100000
+
+urxvt256c*depth: 32
+urxvt256c*background: rgba:0000/0000/0200/c800
