@@ -12,8 +12,9 @@ export GPG_TTY=`tty`
 
 # Configure a reasonably sane prompt
 # - Inject git information
-if [ -f $HOME/modules/git-aware-prompt/prompt.sh ]; then
-	. $HOME/modules/git-aware-prompt/prompt.sh
+export GITAWAREPROMPT=$DOTFILES_HOME/third-party/git-aware-prompt
+if [ -f $GITAWAREPROMPT/main.sh ]; then
+	. $GITAWAREPROMPT/main.sh
 	PS1="[\u@\h \W\$git_branch\$git_dirty]\$ "
 else
 	PS1='[\u@\h \W]\$ '
