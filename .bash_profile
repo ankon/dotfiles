@@ -22,7 +22,7 @@ fi
 # - Add the kubectl context
 find_kubectl_context() {
 	# XXX: Would be nice to also show the current namespace
-	kubectl_context=`kubectl config current-context`
+	kubectl_context=`kubectl config current-context 2>/dev/null`
 	if [ -z "${kubectl_context}" ]; then
 		kubectl_context_formatted=
 	else
