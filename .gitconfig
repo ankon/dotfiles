@@ -32,7 +32,8 @@
 	default = simple
 	followTags = true
 [format]
-	pretty = oneline
+	# Or one of the predefined formats such as 'oneline'
+	pretty = %C(yellow)%h %C(cyan)%cD%Cred%d %Creset%s%Cgreen [%cn]%Creset
 [status]
 	submodulesummary = 1
 [url "https://github.com/Collaborne"]
