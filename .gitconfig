@@ -2,6 +2,11 @@
 	email = andreas.kohn@gmail.com
 	name = Andreas Kohn
 	signingkey = 66E99F92
+[credential]
+	# For Linux
+	helper = netrc
+	# For macOS
+	#helper = osxkeychain
 [core]
 	editor = vi
 	pager = cat
