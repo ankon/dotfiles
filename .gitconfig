@@ -16,6 +16,8 @@
 	algorithm = histogram
 	compactionHeuristic = true
 	submodule = log
+[log]
+	follow = true
 [alias]
 	ci = commit -v
 	st = status
