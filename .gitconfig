@@ -19,7 +19,7 @@
 [log]
 	follow = true
 [alias]
-	ci = commit -v
+	ci = commit
 	st = status
 	co = checkout
 	out = log --oneline @{u}..
@@ -39,6 +39,7 @@
 	insteadOf = git://github.com/Collaborne
 [commit]
 	gpgsign = true
+	verbose = true
 [gpg]
 	program = gpg-wrapper
 [tag]
