@@ -47,3 +47,4 @@
 	autostash = true
 [rerere]
 	enabled = true
+	autoupdate = true
