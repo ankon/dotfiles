@@ -53,3 +53,10 @@ if [ -n "${_vim}" ] && [ -x "${_vim}" ]; then
 	alias vi=${_vim}
 fi
 
+# Prefer xterm-color when using ssh(1), as most remotes don't speak rxvt-unicode-...
+# See https://serverfault.com/questions/302159/is-it-possible-to-change-value-of-term-when-calling-ssh
+case "$TERM" in
+rxvt-*)
+	alias ssh='TERM=xterm-color ssh'
+	;;
+esac
