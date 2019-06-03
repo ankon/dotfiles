@@ -52,6 +52,17 @@ def read_line():
     except KeyboardInterrupt:
         sys.exit()
 
+def get_psi_metric(type, group='some', metric='avg60'):
+    input = open('/proc/pressure/%s' % type)
+    for line in input.readlines():
+        entries = line.strip().split(' ')
+        if entries[0] == group:
+            for metric_pair in entries[1:]:
+                [metric_key, value] = metric_pair.split('=')
+                if metric_key == metric:
+                    return float(value)
+    return -1
+
 if __name__ == '__main__':
     # Skip the first line which contains the version header.
     print_line(read_line())
@@ -70,4 +81,12 @@ if __name__ == '__main__':
         #for container in [ 'mongodb', 'elasticsearch', 'app' ]:
         #    j.insert(0, {'instance' : '%s' % container, 'name' : 'docker', 'full_text' : '%s' % container, 'color' : '%s' % ('#00FFFF' if is_container_running('collaborne_%s_1' % container) else '#7F7F7F')})
         
+        for psi_type in ['cpu', 'io', 'memory']:
+            value = get_psi_metric(psi_type, 'some')
+            j.insert(0, {
+                'instance': psi_type,
+                'name': 'psi',
+                'full_text': '%2.2f%% %s' % (value * 100, psi_type),
+                'color': '%s' % ('#FF0000' if value > 0.8 else '#7F7F7F')
+            })
         print_line(prefix+json.dumps(j))
