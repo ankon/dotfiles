@@ -8,5 +8,6 @@ set sw=4
 set smartindent
 set backspace=indent,eol,start
 set background=dark
+set ruler
 colorscheme greenwint
 
