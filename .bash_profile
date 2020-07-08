@@ -39,19 +39,19 @@ find_kubectl_context() {
 export DOTFILES_ORIGINAL_PROMPT_COMMAND=$PROMPT_COMMAND
 export DOTFILES_PROMPT_COMMAND="find_kubectl_context; $PROMPT_COMMAND"
 PROMPT_COMMAND=$DOTFILES_PROMPT_COMMAND
-export DOTFILES_ORIGINAL_PS1=$PS1
-export DOTFILES_PS1="\$kubectl_context_formatted$PS1"
-PS1=$DOTFILES_PS1
 
+export DOTFILES_ORIGINAL_PS1=$PS1
+DOTFILES_PS1="\$kubectl_context_formatted$PS1"
 case $TERM in
 xterm-*|rxvt-*)
 	# Export the working directory into the window title
-	PS1="$PS1\[\033]0;(Terminal) \W\007\]"
+	DOTFILES_PS1="$DOTFILES_PS1\[\033]0;(Terminal) \W\007\]"
 	;;
 *)
 	;;
 esac
-export PS1
+export DOTFILES_PS1
+PS1=$DOTFILES_PS1
 
 # Prefer vim, if available.
 _vim=`which vim`
