@@ -34,8 +34,14 @@ find_kubectl_context() {
 		fi	
 	fi
 }
-PROMPT_COMMAND="find_kubectl_context; $PROMPT_COMMAND"
-PS1="\$kubectl_context_formatted$PS1"
+
+# Configure the prompt but also expose the previous settings
+export DOTFILES_ORIGINAL_PROMPT_COMMAND=$PROMPT_COMMAND
+export DOTFILES_PROMPT_COMMAND="find_kubectl_context; $PROMPT_COMMAND"
+PROMPT_COMMAND=$DOTFILES_PROMPT_COMMAND
+export DOTFILES_ORIGINAL_PS1=$PS1
+export DOTFILES_PS1="\$kubectl_context_formatted$PS1"
+PS1=$DOTFILES_PS1
 
 case $TERM in
 xterm-*|rxvt-*)
