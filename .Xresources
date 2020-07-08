@@ -9,6 +9,12 @@ urxvt*scrollTtyOutput: false
 urxvt*scrollWithBuffer: true
 urxvt*scrollTtyKeypress: true
 urxvt*saveLines: 100000
+!See https://unix.stackexchange.com/a/329556/101539
+!Remaps the ctrl-alt-c/v/x to ctrl-shift-c/v/x
+urxvt*keysym.Shift-Control-V: eval:paste_clipboard
+urxvt*keysym.Shift-Control-C: eval:selection_to_clipboard
+urxvt*keysym.Control-Meta-c: builtin-string:
+urxvt*keysym.Control-Meta-v: builtin-string:
 
 urxvt*depth: 32
 urxvt*background: rgba:0000/0000/0200/c800
@@ -24,6 +30,10 @@ urxvt256c*scrollTtyOutput: false
 urxvt256c*scrollWithBuffer: true
 urxvt256c*scrollTtyKeypress: true
 urxvt256c*saveLines: 100000
+urxvt256c*keysym.Shift-Control-V: eval:paste_clipboard
+urxvt256c*keysym.Shift-Control-C: eval:selection_to_clipboard
+urxvt256c*keysym.Control-Meta-c: builtin-string:
+urxvt256c*keysym.Control-Meta-v: builtin-string:
 
 urxvt256c*depth: 32
 urxvt256c*background: rgba:0000/0000/0200/c800
