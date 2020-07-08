@@ -26,11 +26,13 @@
 	glog = log --graph --oneline --decorate --all
 	up = pull --ff-only
 	tip = log --oneline HEAD^..HEAD
+	meld = !git difftool -t meld --dir-diff
 [color]
 	ui = auto
 [push]
 	default = simple
 	followTags = true
+	recurseSubmodules = check
 [format]
 	# Or one of the predefined formats such as 'oneline'
 	pretty = %C(yellow)%h %C(cyan)%cD%Cred%d %Creset%s%Cgreen [%cn]%Creset
@@ -44,7 +46,10 @@
 [tag]
 	forceSignAnnotated = true
 [rebase]
-	autostash = true
+	autoStash = true
+	stat = true
+	# XXX: Ideally we would want to also configure --rebase-merges to be the default,
+	#      but it seems that isn't available according to git-config(1)
 [rerere]
 	enabled = true
 	autoupdate = true
