@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Install with xdg-mime install x-code-insiders-workspace.xml && update-mime-database ~/.local/share/mime/ -->
+<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+  <mime-type type="application/x-code-insiders-workspace">
+    <glob pattern="*.code-workspace"/>
+    <comment>Visual Studio Code (Insiders) workspace</comment>
+  </mime-type>
+</mime-info>
