@@ -1,5 +1,17 @@
 #!/bin/sh
 
+GPG=
+for f in /usr/bin/gpg2 /usr/local/bin/gpg2 /usr/local/bin/gpg; do
+	if [ -x $f ]; then
+		GPG=$f
+		break
+	fi
+done
+if [ -z "$GPG" ]; then
+	echo "No gpg binary found" >&2
+	exit 1
+fi
+
 echo "Waiting for GPG configuration" >&2
 while true; do
 	if [ -f $HOME/.gnupg/secring.gpg ]; then
@@ -8,5 +20,4 @@ while true; do
 	sleep 1
 done
 
-exec /usr/bin/gpg2 "$@"
-
+exec $GPG "$@"
