@@ -7,8 +7,9 @@ export PATH=$PATH:$DOTFILES_HOME/bin
 # Make gpg 1.4.x find the gnupg-agent 2.1.x
 # See https://bugzilla.redhat.com/show_bug.cgi?id=1221234#c5
 # See https://bugs.gnupg.org/gnupg/issue1986
-export GPG_AGENT_INFO=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent::1
-export GPG_TTY=`tty`
+# XXX: Left here for historic reasons; no longer using GPG 1.4.x
+#export GPG_AGENT_INFO=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent::1
+#export GPG_TTY=`tty`
 
 # Configure a reasonably sane prompt
 # - Inject git information
