@@ -3,6 +3,12 @@
 echo "WARNING: Incomplete, and will likely destroy existing configuration" >&2
 exit 1
 
+install_common() {
+	for f in .bash_profile .gitconfig .vimrc .Xresources; do
+		ln -sf "$PWD/$f" "$HOME/$f"
+	done
+}
+
 install_linux() {
 	# Install custom mime types
 	for config in .local/share/mime/*.xml; do
@@ -27,6 +33,13 @@ install_darwin() {
 	chsh -s /usr/local/bin/bash
 }
 
+# Ensure submodule things are initialized
+git submodule init && git submodule update
+
+# Link common content
+install_common
+
+# Install OS-specific parts
 case "$(uname)" in
 	Darwin)
 		install_darwin
