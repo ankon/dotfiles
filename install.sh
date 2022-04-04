@@ -36,6 +36,11 @@ install_darwin() {
 
 	echo /usr/local/bin/bash | sudo tee -a /etc/shells
 	chsh -s /usr/local/bin/bash
+
+	mkdir -p "$HOME/bin"
+	for f in code; do
+		ln -sf "$PWD/bin.Darwin/$f" "$HOME/bin/$f"
+	done
 }
 
 # Ensure submodule things are initialized
