@@ -1,3 +1,6 @@
 [submodule "third-party/git-aware-prompt"]
 	path = third-party/git-aware-prompt
 	url = https://github.com/jimeh/git-aware-prompt
+[submodule "third-party/nvs"]
+	path = third-party/nvs
+	url = https://github.com/jasongin/nvs

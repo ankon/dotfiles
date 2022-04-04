@@ -70,3 +70,6 @@ rxvt-*)
 	alias ssh='TERM=xterm-color ssh'
 	;;
 esac
+
+export NVS_HOME="$DOTFILES_HOME/third-party/nvs"
+[ -s "$NVS_HOME/nvs.sh" ] && . "$NVS_HOME/nvs.sh"
