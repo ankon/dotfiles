@@ -1,11 +1,12 @@
 #!/bin/sh
 
+export PATH=$PATH:$HOME/bin
+
 _me=${BASH_SOURCE[0]}
 if [ -L "${_me}" ]; then
 	_me=$(readlink "${_me}")
 fi
 DOTFILES_HOME=`cd $(dirname ${_me:-$0}) >/dev/null 2>&1; echo $PWD`
-export PATH=$PATH:$DOTFILES_HOME/bin
 
 # Make gpg 1.4.x find the gnupg-agent 2.1.x
 # See https://bugzilla.redhat.com/show_bug.cgi?id=1221234#c5
