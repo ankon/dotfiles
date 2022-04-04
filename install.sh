@@ -7,6 +7,11 @@ install_common() {
 	for f in .bash_profile .gitconfig .vimrc .Xresources; do
 		ln -sf "$PWD/$f" "$HOME/$f"
 	done
+
+	mkdir "$HOME/bin"
+	for f in gpg-wrapper; do
+		ln -s "$PWD/bin/$f" "$HOME/bin/$f"
+	done
 }
 
 install_linux() {
