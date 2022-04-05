@@ -75,4 +75,7 @@ esac
 export NVS_HOME="$DOTFILES_HOME/third-party/nvs"
 [ -s "$NVS_HOME/nvs.sh" ] && . "$NVS_HOME/nvs.sh"
 
+GIT_COMPLETION="$DOTFILES_HOME/third-party/git/contrib/completion/git-completion.bash"
+test -f "$GIT_COMPLETION" && . "$GIT_COMPLETION"
+
 [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
