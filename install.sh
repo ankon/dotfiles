@@ -8,9 +8,9 @@ install_common() {
 		ln -sf "$PWD/$f" "$HOME/$f"
 	done
 
-	mkdir "$HOME/bin"
+	mkdir "$HOME/.local/bin"
 	for f in gpg-wrapper; do
-		ln -s "$PWD/bin/$f" "$HOME/bin/$f"
+		ln -s "$PWD/bin/$f" "$HOME/.local/bin/$f"
 	done
 }
 
@@ -37,9 +37,8 @@ install_darwin() {
 	echo /usr/local/bin/bash | sudo tee -a /etc/shells
 	chsh -s /usr/local/bin/bash
 
-	mkdir -p "$HOME/bin"
 	for f in code docker docker-compose; do
-		ln -sf "$PWD/bin.Darwin/$f" "$HOME/bin/$f"
+		ln -sf "$PWD/bin.Darwin/$f" "$HOME/.local/bin/$f"
 	done
 }
 

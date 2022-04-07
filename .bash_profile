@@ -1,6 +1,9 @@
 #!/bin/sh
 
-export PATH=$PATH:$HOME/bin
+# ~/.local/bin is before ~/bin, as the former is "more standard"
+# See https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html for a discussion
+# NOTE: No user-owned directories should be before the system-owned ones, to prevent security issues
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin
 
 _me=${BASH_SOURCE[0]}
 if [ -L "${_me}" ]; then
