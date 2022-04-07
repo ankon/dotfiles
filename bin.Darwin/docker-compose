@@ -1,0 +1,21 @@
+#!/bin/sh
+
+socket=${DOCKER_HOST:-/var/run/docker.sock}
+is_podman=$(curl -sf --unix-socket ${socket} http:/localhost/version|jq -r '[.Components[]|select(.Name=="Podman Engine")]|length')
+if [ -z "${is_podman}" ]; then
+	echo "Cannot detect a running docker engine at ${socket}" >&2
+	exit 1
+fi
+
+if [ ${is_podman} -eq 1 ]; then
+	# Latest release
+	exec $HOME/Library/Python/3.9/bin/podman-compose "$@"
+	# Development could look like this:
+	#exec $HOME/project/podman-compose/podman_compose.py "$@"
+else
+	exec /usr/local/bin/docker-compose "$@"
+fi
+
+exit 1
+
+

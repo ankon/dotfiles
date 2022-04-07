@@ -38,7 +38,7 @@ install_darwin() {
 	chsh -s /usr/local/bin/bash
 
 	mkdir -p "$HOME/bin"
-	for f in code; do
+	for f in code docker docker-compose; do
 		ln -sf "$PWD/bin.Darwin/$f" "$HOME/bin/$f"
 	done
 }
