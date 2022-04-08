@@ -25,7 +25,13 @@ install_linux() {
 install_darwin() {
 	# Install software
 	# XXX: This requires homebrew to use /usr/local as prefix; on Apple Silicon that is by default not the case!
-	brew install bash gpg pinentry-mac
+	brew install \
+		bash \
+		colordiff \
+		gpg \
+		patchutils \
+		pinentry-mac \
+		wiggle
 
 	# Install keybindings
 	mkdir -p ~/Library/KeyBindings
