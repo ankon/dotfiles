@@ -7,6 +7,7 @@ install_common() {
 	for f in .bash_profile .gitconfig .vimrc .Xresources; do
 		ln -sf "$PWD/$f" "$HOME/$f"
 	done
+	ln -s "$PWD/.gitignore_global" "$HOME/.gitignore"
 
 	mkdir "$HOME/.local/bin"
 	for f in gpg-wrapper; do

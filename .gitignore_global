@@ -1,0 +1,4 @@
+# Global ignores, see core.excludesFile
+*.orig
+*.rej
+*.porig

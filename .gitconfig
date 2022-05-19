@@ -11,6 +11,7 @@
 	editor = vi
 	pager = cat
 	whitespace = trailing-space,space-before-tab,tabwidth=4
+	excludesFile = ~/.gitignore
 [diff]
 	renames = true
 	algorithm = histogram
