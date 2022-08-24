@@ -27,21 +27,27 @@ export DOTFILES_ORIGINAL_PS1=$PS1
 export GITAWAREPROMPT=$DOTFILES_HOME/third-party/git-aware-prompt
 if [ -f $GITAWAREPROMPT/main.sh ]; then
 	. $GITAWAREPROMPT/main.sh
-	PS1="[\u@\h \W\$git_branch\$git_dirty]\$ "
-else
-	PS1='[\u@\h \W]\$ '
 fi
 
 # Run as part of the prompt, and set environment variables for use it it.
 dotfiles_prompt_command() {
-	# Empty placeholder
-	:
+	# Check if the current directory is a git clone from framer, and if so
+	# that the git user is properly configured
+	if [ -d .git ] && git remote -v 2>/dev/null | grep -E 'github.com[:/]framer' >/dev/null 2>&1; then
+		user=$(git config --get user.email)
+		if [ "${user}" = "andreas.kohn@framer.com" ]; then
+			git_user_warning=""
+		else
+			git_user_warning="{${user}} "
+		fi
+	fi
 }
 
 # Configure the prompt but also expose the previous settings
 export DOTFILES_PROMPT_COMMAND="dotfiles_prompt_command; $PROMPT_COMMAND"
 PROMPT_COMMAND=$DOTFILES_PROMPT_COMMAND
 
+PS1="\$git_user_warning[\u@\h \W\$git_branch\$git_dirty]\$ "
 DOTFILES_PS1="$PS1"
 case $TERM in
 xterm-*|rxvt-*)
