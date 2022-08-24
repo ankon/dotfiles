@@ -28,28 +28,19 @@ else
 	PS1='[\u@\h \W]\$ '
 fi
 
-# - Add the kubectl context
-find_kubectl_context() {
-	# XXX: Would be nice to also show the current namespace
-	kubectl_context=`kubectl config current-context 2>/dev/null`
-	if [ -z "${kubectl_context}" ]; then
-		kubectl_context_formatted=
-	else
-		if [ "${kubectl_context}" = "minikube" ]; then
-			kubectl_context_formatted="[${kubectl_context}] "
-		else
-			kubectl_context_formatted="[\033\[31m${kubectl_context}\033\[0m] "
-		fi	
-	fi
+# Run as part of the prompt, and set environment variables for use it it.
+dotfiles_prompt_command() {
+	# Empty placeholder
+	:
 }
 
 # Configure the prompt but also expose the previous settings
 export DOTFILES_ORIGINAL_PROMPT_COMMAND=$PROMPT_COMMAND
-export DOTFILES_PROMPT_COMMAND="find_kubectl_context; $PROMPT_COMMAND"
+export DOTFILES_PROMPT_COMMAND="dotfiles_prompt_command; $PROMPT_COMMAND"
 PROMPT_COMMAND=$DOTFILES_PROMPT_COMMAND
 
 export DOTFILES_ORIGINAL_PS1=$PS1
-DOTFILES_PS1="\$kubectl_context_formatted$PS1"
+DOTFILES_PS1="$PS1"
 case $TERM in
 xterm-*|rxvt-*)
 	# Export the working directory into the window title
