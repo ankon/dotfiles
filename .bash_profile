@@ -18,6 +18,10 @@ DOTFILES_HOME=`cd $(dirname ${_me:-$0}) >/dev/null 2>&1; echo $PWD`
 #export GPG_AGENT_INFO=${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent::1
 #export GPG_TTY=`tty`
 
+# Save the original prompt
+export DOTFILES_ORIGINAL_PROMPT_COMMAND=$PROMPT_COMMAND
+export DOTFILES_ORIGINAL_PS1=$PS1
+
 # Configure a reasonably sane prompt
 # - Inject git information
 export GITAWAREPROMPT=$DOTFILES_HOME/third-party/git-aware-prompt
@@ -35,11 +39,9 @@ dotfiles_prompt_command() {
 }
 
 # Configure the prompt but also expose the previous settings
-export DOTFILES_ORIGINAL_PROMPT_COMMAND=$PROMPT_COMMAND
 export DOTFILES_PROMPT_COMMAND="dotfiles_prompt_command; $PROMPT_COMMAND"
 PROMPT_COMMAND=$DOTFILES_PROMPT_COMMAND
 
-export DOTFILES_ORIGINAL_PS1=$PS1
 DOTFILES_PS1="$PS1"
 case $TERM in
 xterm-*|rxvt-*)
