@@ -16,6 +16,9 @@ install_common() {
 }
 
 install_linux() {
+	# Install packages
+	dnf install rxvt-unicode
+
 	# Install custom mime types
 	for config in .local/share/mime/*.xml; do
 	    xdg-mime install "${config}"
