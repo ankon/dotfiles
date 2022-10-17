@@ -49,6 +49,7 @@
 [rebase]
 	autoStash = true
 	stat = true
+	updateRefs = true
 	# XXX: Ideally we would want to also configure --rebase-merges to be the default,
 	#      but it seems that isn't available according to git-config(1)
 [rerere]
