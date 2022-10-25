@@ -80,4 +80,5 @@ export NVS_HOME="$DOTFILES_HOME/third-party/nvs"
 GIT_COMPLETION="$DOTFILES_HOME/third-party/git/contrib/completion/git-completion.bash"
 test -f "$GIT_COMPLETION" && . "$GIT_COMPLETION"
 
+# Include the user's .bashrc
 [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
