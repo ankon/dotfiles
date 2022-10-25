@@ -80,5 +80,10 @@ export NVS_HOME="$DOTFILES_HOME/third-party/nvs"
 GIT_COMPLETION="$DOTFILES_HOME/third-party/git/contrib/completion/git-completion.bash"
 test -f "$GIT_COMPLETION" && . "$GIT_COMPLETION"
 
+# macOS-compatible copy/paste helpers
+# See https://medium.com/@codenameyau/how-to-copy-and-paste-in-terminal-c88098b5840d
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
+
 # Include the user's .bashrc
 [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"

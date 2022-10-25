@@ -17,7 +17,7 @@ install_common() {
 
 install_linux() {
 	# Install packages
-	dnf install rxvt-unicode
+	dnf install rxvt-unicode xsel
 
 	# Install custom mime types
 	for config in .local/share/mime/*.xml; do
