@@ -24,6 +24,10 @@ install_linux() {
 	    xdg-mime install "${config}"
 	done
 	update-mime-database ~/.local/share/mime/
+
+	for f in auto_lock_screen.sh; do
+		ln -sf "$PWD/bin.Linux/$f" "$HOME/.local/bin/$f"
+	done
 }
 
 install_darwin() {

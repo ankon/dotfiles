@@ -174,11 +174,12 @@ bindsym $mod+F4 kill
 bindsym $mod+Ctrl+Alt+x [instance=__focused__] kill
 
 # Screen locking
+set $locker ~/bin/random-earthporn-image.sh ~/Documents/lock-screen.png && i3lock -c 000000     -i ~/Documents/lock-screen.png && echo mem > /sys/power/state
 #
 # Manual
-bindsym Control+Mod1+L exec "~/bin/random-earthporn-image.sh ~/Documents/lock-screen.png && i3lock -c 000000 -i ~/Documents/lock-screen.png && echo mem > /sys/power/state"
+bindsym Control+Mod1+L exec $locker
 # Automatic
-exec --no-startup-id xautolock -time 10 -locker "~/bin/random-earthporn-image.sh ~/Documents/lock-screen.png && i3lock -c 000000 -i ~/Documents/lock-screen.png && echo mem > /sys/power/state"
+exec --no-startup-id xautolock -time 10 -locker ~/.local/bin/auto_lock_screen.sh "$locker"
 # TODO:
 # Use xss-lock, check https://media.ccc.de/v/36c3-80-linux-auf-dem-desktop
 
