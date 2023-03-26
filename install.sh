@@ -17,7 +17,9 @@ install_common() {
 
 install_linux() {
 	# Install packages
-	dnf install rxvt-unicode xsel
+	dnf install rxvt-unicode xsel vim
+	# NB: To switch the default editor for the complete system:
+	# `dnf install -y --allowerasing vim-default-editor`
 
 	# Install custom mime types
 	for config in .local/share/mime/*.xml; do
