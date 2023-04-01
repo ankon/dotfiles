@@ -17,7 +17,12 @@ install_common() {
 
 install_linux() {
 	# Install packages
-	dnf install rxvt-unicode xsel vim
+	sudo dnf install \
+		colordiff \
+		rxvt-unicode \
+		vim \
+		wiggle \
+		xsel
 	# NB: To switch the default editor for the complete system:
 	# `dnf install -y --allowerasing vim-default-editor`
 
