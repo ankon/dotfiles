@@ -65,6 +65,11 @@ install_linux() {
 	for f in "$PWD/bin.Linux"/*; do
 		ln -sf "$f" "$HOME/.local/bin/$f"
 	done
+
+	# Enable notifications for blueman; if pairing fails disable these
+	# to hopefully switch it into the annoying-but-working "use dialog for everything"
+	# approach
+	gsettings set org.blueman.general notification-daemon true
 }
 
 install_darwin() {
