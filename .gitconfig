@@ -60,4 +60,6 @@
 [init]
 	defaultBranch = main
 [merge]
-	conflictstyle = diff3
+	# `zdiff3` requires git 2.35, use `diff3` before
+	# See https://github.blog/2022-01-24-highlights-from-git-2-35/
+	conflictstyle = zdiff3
