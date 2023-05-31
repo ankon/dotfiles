@@ -40,6 +40,8 @@ dotfiles_prompt_command() {
 		else
 			git_user_warning="{${user}} "
 		fi
+	else
+		git_user_warning=""
 	fi
 }
 
