@@ -56,8 +56,14 @@ install_linux() {
 	done
 	update-mime-database ~/.local/share/mime/
 
-	for f in auto_lock_screen.sh; do
-		ln -sf "$PWD/bin.Linux/$f" "$HOME/.local/bin/$f"
+	for d in .config/*; do
+		for f in "$d"/*; do
+			ln -sf "$PWD/$f" "$HOME/$f"
+		done
+	done
+
+	for f in "$PWD/bin.Linux"/*; do
+		ln -sf "$f" "$HOME/.local/bin/$f"
 	done
 }
 
