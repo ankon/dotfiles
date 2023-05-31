@@ -185,7 +185,7 @@ bindsym Mod1+F4 kill
 bindsym $mod+F4 kill
 
 # Kill focused window
-bindsym $mod+Ctrl+Alt+x [instance=__focused__] kill
+bindsym $mod+Ctrl+Mod1+x [instance=__focused__] kill
 
 # Screen locking
 set $locker ~/bin/random-earthporn-image.sh ~/Documents/lock-screen.png && i3lock -c 000000     -i ~/Documents/lock-screen.png && echo mem > /sys/power/state
