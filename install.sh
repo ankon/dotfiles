@@ -17,15 +17,38 @@ install_common() {
 }
 
 install_linux() {
+	# Enable RPM Fusion repositories
+	dnf install \
+		https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+		https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+	# Enable third-party repositories
+
 	# Install packages
-	sudo dnf install \
-		colordiff \
-		rxvt-unicode \
-		vim \
-		wiggle \
-		xsel
 	# NB: To switch the default editor for the complete system:
 	# `dnf install -y --allowerasing vim-default-editor`
+	dnf install \
+		apg \
+		arandr \
+		argyllcms \
+		colordiff \
+		gnome-keyring \
+		gnupg2 \
+		mc \
+		nss-tools \
+		patchutils \
+		pinentry-gtk \
+		rxvt-unicode \
+		simplescreenrecorder \
+		vim \
+		volumeicon \
+		wiggle \
+		xsel \
+		xwininfo
+
+	# Install additional DNF plugins
+	dnf install \
+		'dnf-command(versionlock)'
 
 	# Install custom mime types
 	for config in .local/share/mime/*.xml; do
