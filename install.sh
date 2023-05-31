@@ -32,6 +32,7 @@ install_linux() {
 		arandr \
 		argyllcms \
 		colordiff \
+		git-subtree \
 		gnome-keyring \
 		gnupg2 \
 		mc \
