@@ -32,7 +32,7 @@ install_linux() {
 		arandr \
 		argyllcms \
 		colordiff \
-		font-config \
+		fontconfig \
 		git-subtree \
 		gnome-keyring \
 		gnupg2 \
