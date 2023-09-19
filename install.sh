@@ -32,6 +32,7 @@ install_linux() {
 		arandr \
 		argyllcms \
 		colordiff \
+		font-config \
 		git-subtree \
 		gnome-keyring \
 		gnupg2 \
@@ -55,7 +56,12 @@ install_linux() {
 	for config in .local/share/mime/*.xml; do
 	    xdg-mime install "${config}"
 	done
-	update-mime-database ~/.local/share/mime/
+	update-mime-database "$HOME/.local/share/mime/"
+
+	# Install fonts
+	mkdir -p "$HOME/.local/share/fonts"
+	find third-party/JetBrainsMono/fonts/ -type f -exec cp {} "$HOME/.local/share/fonts" \;
+	fc-cache -f
 
 	for d in .config/*; do
 		for f in "$d"/*; do

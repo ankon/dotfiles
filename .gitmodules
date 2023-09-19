@@ -8,3 +8,7 @@
 	path = third-party/git
 	url = https://github.com/git/git
 	shallow = true
+[submodule "third-party/JetBrainsMono"]
+	path = third-party/JetBrainsMono
+	url = https://github.com/JetBrains/JetBrainsMono
+	shallow = true

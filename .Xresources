@@ -2,8 +2,10 @@ urxvt*foreground: light gray
 urxvt*background: black
 urxvt*scrollBar: false
 urxvt*scrollBar_right: false
-urxvt*font: xft:bitstream vera sans mono:size=10:antialias=true
-urxvt*boldFont: xft:bitstream vera sans mono:bold:size=10:antialias=true
+!urxvt*font: xft:bitstream vera sans mono:size=10:antialias=true
+!urxvt*boldFont: xft:bitstream vera sans mono:bold:size=10:antialias=true
+urxvt*font: xft:jetbrains mono:size=10:antialias=true
+urxvt*boldFont: xft:jetbrains mono:bold:size=10:antialias=true
 urxvt*loginShell: true
 urxvt*scrollTtyOutput: false
 urxvt*scrollWithBuffer: true
@@ -23,8 +25,10 @@ urxvt256c*foreground: light gray
 urxvt256c*background: black
 urxvt256c*scrollBar: false
 urxvt256c*scrollBar_right: false
-urxvt256c*font: xft:bitstream vera sans mono:size=10:antialias=true
-urxvt256c*boldFont: xft:bitstream vera sans mono:bold:size=10:antialias=true
+!urxvt256c*font: xft:bitstream vera sans mono:size=10:antialias=true
+!urxvt256c*boldFont: xft:bitstream vera sans mono:bold:size=10:antialias=true
+urxvt256c*font: xft:jetbrains mono:size=10:antialias=true
+urxvt256c*boldFont: xft:jetbrains mono:bold:size=10:antialias=true
 urxvt256c*loginShell: true
 urxvt256c*scrollTtyOutput: false
 urxvt256c*scrollWithBuffer: true
