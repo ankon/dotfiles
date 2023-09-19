@@ -65,13 +65,14 @@ install_linux() {
 	fc-cache -f
 
 	for d in .config/*; do
+		mkdir -p "$HOME/$d"
 		for f in "$d"/*; do
 			ln -sf "$PWD/$f" "$HOME/$f"
 		done
 	done
 
 	for f in "$PWD/bin.Linux"/*; do
-		ln -sf "$f" "$HOME/.local/bin/$f"
+		ln -sf "$f" "$HOME/.local/bin/$(basename $f)"
 	done
 
 	# Enable notifications for blueman; if pairing fails disable these
