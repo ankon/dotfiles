@@ -31,6 +31,7 @@ install_linux() {
 		apg \
 		arandr \
 		argyllcms \
+		blueman \
 		colordiff \
 		fontconfig \
 		git-subtree \
