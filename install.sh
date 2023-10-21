@@ -34,6 +34,7 @@ install_linux() {
 		blueman \
 		colordiff \
 		fontconfig \
+		git-lfs \
 		git-subtree \
 		gnome-keyring \
 		gnupg2 \
@@ -87,6 +88,7 @@ install_darwin() {
 	brew install \
 		bash \
 		colordiff \
+		git-lfs \
 		gpg \
 		patchutils \
 		pinentry-mac \
