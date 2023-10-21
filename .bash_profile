@@ -68,6 +68,11 @@ if [ -n "${_vim}" ] && [ -x "${_vim}" ]; then
 	alias vi=${_vim}
 fi
 
+# Prefer urxvt, if available
+if [ -x urxvt256c ]; then
+	export TERMINAL=urxvt256c
+fi
+
 # Prefer xterm-color when using ssh(1), as most remotes don't speak rxvt-unicode-...
 # See https://serverfault.com/questions/302159/is-it-possible-to-change-value-of-term-when-calling-ssh
 case "$TERM" in
