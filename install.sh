@@ -43,6 +43,7 @@ install_linux() {
 		patchutils \
 		pinentry-gtk \
 		rxvt-unicode \
+		screen \
 		simplescreenrecorder \
 		vim \
 		volumeicon \
