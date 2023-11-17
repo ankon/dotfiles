@@ -84,8 +84,24 @@ esac
 export NVS_HOME="$DOTFILES_HOME/third-party/nvs"
 [ -s "$NVS_HOME/nvs.sh" ] && . "$NVS_HOME/nvs.sh"
 
+# Configure auto-completions
 GIT_COMPLETION="$DOTFILES_HOME/third-party/git/contrib/completion/git-completion.bash"
 test -f "$GIT_COMPLETION" && . "$GIT_COMPLETION"
+
+terraform=$(type -p terraform 2>/dev/null)
+if [ -x "${terraform}" ]; then
+	complete -C "${terraform}" terraform
+fi
+
+stratus=$(type -p stratus 2>/dev/null)
+if [ -x "${stratus}" ]; then
+	shell_type=$(basename ${SHELL:-/bin/sh})
+	stratus_completion=$HOME/.stratus.completion.${shell_type}
+	if [ \! -f "${stratus_completion}" ] || [ "${s}" -nt "${stratus_completion}" ]; then
+		"${stratus}" completion ${shell_type} > "${stratus_completion}"
+	fi
+	source "${stratus_completion}"
+fi
 
 # macOS-compatible copy/paste helpers
 # See https://medium.com/@codenameyau/how-to-copy-and-paste-in-terminal-c88098b5840d
