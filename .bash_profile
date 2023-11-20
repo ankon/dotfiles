@@ -108,6 +108,12 @@ fi
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 
+# Add the standard go binary path
+gopath=$(go env GOPATH || echo "")
+if [ -n "${gopath}" ]; then
+	export PATH=$PATH:${gopath}/bin
+fi
+
 # Configure docker tools to use podman, if that is available
 podman_socket=$(podman info --format '{{.Host.RemoteSocket.Path}}' 2>/dev/null)
 if [ -n "${podman_socket}" ]; then
