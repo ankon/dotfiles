@@ -38,6 +38,7 @@ install_linux() {
 		git-subtree \
 		gnome-keyring \
 		gnupg2 \
+		make \
 		mc \
 		nss-tools \
 		patchutils \
