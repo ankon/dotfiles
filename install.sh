@@ -43,6 +43,8 @@ install_linux() {
 		nss-tools \
 		patchutils \
 		pinentry-gtk \
+		podman \
+		podman-docker \
 		rxvt-unicode \
 		screen \
 		simplescreenrecorder \
@@ -82,6 +84,11 @@ install_linux() {
 	# to hopefully switch it into the annoying-but-working "use dialog for everything"
 	# approach
 	gsettings set org.blueman.general notification-daemon true
+
+	# Enable podman/docker compatibility and expose the _user_ service socket
+	systemctl enable --now --user podman podman.socket
+	# Disable the notice that we're using an "emulation" for docker
+	sudo touch /etc/containers/nodocker
 }
 
 install_darwin() {

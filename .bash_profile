@@ -108,5 +108,11 @@ fi
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 
+# Configure docker tools to use podman, if that is available
+podman_socket=$(podman info --format '{{.Host.RemoteSocket.Path}}' 2>/dev/null)
+if [ -n "${podman_socket}" ]; then
+	export DOCKER_HOST=unix://${podman_socket}
+fi
+
 # Include the user's .bashrc
 [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"
