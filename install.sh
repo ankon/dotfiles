@@ -119,6 +119,13 @@ install_darwin() {
 	for f in code docker docker-compose; do
 		ln -sf "$PWD/bin.Darwin/$f" "$HOME/.local/bin/$f"
 	done
+
+	# Allow XQuartz to accept TCP connections
+	# NB: The key depends on where XQuartz came from:
+	#   org.xquartz.X11 is for the package
+	brew install --cask xquartz
+	defaults write org.xquartz.X11 nolisten_tcp -boolean false
+	# See other settings using `defaults read org.xquartz.X11`.
 }
 
 # Ensure submodule things are initialized
