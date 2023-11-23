@@ -38,6 +38,8 @@ install_linux() {
 		git-subtree \
 		gnome-keyring \
 		gnupg2 \
+		htop \
+		iotop \
 		make \
 		mc \
 		nss-tools \
