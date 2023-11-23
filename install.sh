@@ -51,6 +51,7 @@ install_linux() {
 		vim \
 		volumeicon \
 		wiggle \
+		wireguard-tools \
 		xsel \
 		xwininfo
 
