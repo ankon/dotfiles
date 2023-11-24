@@ -120,5 +120,11 @@ if [ -n "${podman_socket}" ]; then
 	export DOCKER_HOST=unix://${podman_socket}
 fi
 
+# On macOS, if colima is installed: Point to the colima socket. Note that this check
+# doesn't require colima to run.
+if [ -d "${HOME}/.colima" ]; then
+	export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
+fi
+
 # Include the user's .bashrc
 [ -f "$HOME/.bashrc" ] && . "$HOME/.bashrc"

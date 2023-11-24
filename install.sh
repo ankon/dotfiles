@@ -99,6 +99,7 @@ install_darwin() {
 	# XXX: This requires homebrew to use /usr/local as prefix; on Apple Silicon that is by default not the case!
 	brew install \
 		bash \
+		colima \
 		colordiff \
 		git-lfs \
 		gpg \
@@ -126,6 +127,9 @@ install_darwin() {
 	brew install --cask xquartz
 	defaults write org.xquartz.X11 nolisten_tcp -boolean false
 	# See other settings using `defaults read org.xquartz.X11`.
+
+	# Colima can be started automatically, but that will reduce battery life.
+	#brew services start colima
 }
 
 # Ensure submodule things are initialized
