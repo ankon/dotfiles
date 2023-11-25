@@ -101,6 +101,7 @@ install_darwin() {
 		bash \
 		colima \
 		colordiff \
+		docker-compose \
 		git-lfs \
 		gpg \
 		patchutils \
@@ -117,7 +118,7 @@ install_darwin() {
 	echo /usr/local/bin/bash | sudo tee -a /etc/shells
 	chsh -s /usr/local/bin/bash
 
-	for f in code docker docker-compose; do
+	for f in code docker; do
 		ln -sf "$PWD/bin.Darwin/$f" "$HOME/.local/bin/$f"
 	done
 
