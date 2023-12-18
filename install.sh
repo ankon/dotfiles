@@ -57,6 +57,11 @@ install_linux() {
 		xsel \
 		xwininfo
 
+	# Install languages
+	sudo dnf install \
+		golang-bin golang-src \
+		rust rust-src cargo clippy
+
 	# Install additional DNF plugins
 	sudo dnf install \
 		'dnf-command(versionlock)'
