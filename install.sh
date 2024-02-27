@@ -17,8 +17,11 @@ install_common() {
 }
 
 install_linux() {
+	# Install dnf5 first
+	sudo dnf install -y dnf5
+	
 	# Enable RPM Fusion repositories
-	sudo dnf install \
+	sudo dnf5 install \
 		https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
 		https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
@@ -27,7 +30,7 @@ install_linux() {
 	# Install packages
 	# NB: To switch the default editor for the complete system:
 	# `dnf install -y --allowerasing vim-default-editor`
-	sudo dnf install \
+	sudo dnf5 install \
 		apg \
 		arandr \
 		argyllcms \
@@ -58,12 +61,12 @@ install_linux() {
 		xwininfo
 
 	# Install languages
-	sudo dnf install \
+	sudo dnf5 install \
 		golang-bin golang-src \
 		rust rust-src cargo clippy
 
 	# Install additional DNF plugins
-	sudo dnf install \
+	sudo dnf5 install \
 		'dnf-command(versionlock)'
 
 	# Install custom mime types
