@@ -61,6 +61,10 @@ install_linux() {
 		xsel \
 		xwininfo
 
+	# If running wayland/sway:
+	sudo dnf5 install \
+		wdisplays # replace arandr/xrandr
+
 	# Install languages
 	sudo dnf5 install \
 		golang-bin golang-src \
