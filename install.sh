@@ -37,6 +37,7 @@ install_linux() {
 		blueman \
 		colordiff \
 		fontconfig \
+		gimp \
 		git-lfs \
 		git-subtree \
 		gnome-keyring \
