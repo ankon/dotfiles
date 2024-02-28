@@ -74,6 +74,25 @@ install_linux() {
 	sudo dnf5 install \
 		'dnf-command(versionlock)'
 
+	# Install microsoft software: Edge, VSCode
+	sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+	cat <<EOF | sudo tee /etc/yum.repos.d/microsoft.repo
+[microsoft-edge-dev]
+name=microsoft-edge-dev
+baseurl=https://packages.microsoft.com/yumrepos/edge/
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+
+[code]
+name=Visual Studio Code
+baseurl=https://packages.microsoft.com/yumrepos/vscode/
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+EOF
+	sudo dnf5 install microsoft-edge-dev code-insiders
+
 	# Install custom mime types
 	for config in .local/share/mime/*.xml; do
 	    xdg-mime install "${config}"
