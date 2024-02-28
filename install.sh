@@ -10,7 +10,7 @@ install_common() {
 	done
 	ln -sf "$PWD/.gitignore_global" "$HOME/.gitignore"
 
-	mkdir "$HOME/.local/bin"
+	mkdir -p "$HOME/.local/bin"
 	for f in gpg-wrapper; do
 		ln -sf "$PWD/bin/$f" "$HOME/.local/bin/$f"
 	done
