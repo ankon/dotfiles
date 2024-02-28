@@ -38,6 +38,7 @@ install_linux() {
 		colordiff \
 		fontconfig \
 		gimp \
+		git-credential-libsecret \
 		git-lfs \
 		git-subtree \
 		gnome-keyring \
@@ -125,6 +126,9 @@ EOF
 	systemctl enable --now --user podman podman.socket
 	# Disable the notice that we're using an "emulation" for docker
 	sudo touch /etc/containers/nodocker
+
+	# Configure git for the system
+	git config --global credential.helper /usr/libexec/git-core/git-credential-libsecret	
 }
 
 install_darwin() {
@@ -164,6 +168,9 @@ install_darwin() {
 
 	# Colima can be started automatically, but that will reduce battery life.
 	#brew services start colima
+
+	# Configure git for the system
+	git config --global credential.helper osxkeychain
 }
 
 # Ensure submodule things are initialized

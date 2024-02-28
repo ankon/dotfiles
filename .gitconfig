@@ -3,8 +3,11 @@
 	name = Andreas Kohn
 	signingkey = 66E99F92
 [credential]
+	# Note: This section will configured automatically in install.sh, the values here are for documentation
+	# only. Eventually this will need to be switched into a per-host configuration that is excluded from git ...
 	# For Linux
-	helper = netrc
+	#helper = /usr/libexec/git-core/git-credential-libsecret
+	#helper = netrc
 	# For macOS
 	#helper = osxkeychain
 [core]
