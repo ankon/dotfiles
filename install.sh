@@ -42,6 +42,7 @@ install_linux() {
 		gnome-keyring \
 		gnupg2 \
 		htop \
+		iftop \
 		iotop \
 		make \
 		mc \
