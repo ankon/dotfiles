@@ -30,7 +30,7 @@ install_linux() {
 	# Install packages
 	# NB: To switch the default editor for the complete system:
 	# `dnf install -y --allowerasing vim-default-editor`
-	sudo dnf5 install \
+	sudo dnf5 install --skip-unavailable \
 		apg \
 		arandr \
 		argyllcms \
