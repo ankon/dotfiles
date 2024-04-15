@@ -180,6 +180,7 @@ git submodule init && git submodule update
 install_common
 
 # TODO: Set up nvs node/lts
+# TODO: Set up sshd.service (sometimes)
 
 # Install OS-specific parts
 case "$(uname)" in
