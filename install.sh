@@ -4,7 +4,7 @@ echo "WARNING: Incomplete, and will likely destroy existing configuration" >&2
 exit 1
 
 install_common() {
-	for f in .gitconfig .vimrc .vim/colors/* .Xresources .bash_profile .bashrc .bashrc.d/*.sh; do
+	for f in .gitconfig .vimrc .vim/colors/* .Xresources .bash_profile .bashrc .bashrc.d/*.sh .ssh/config.d/*; do
 		mkdir -p $(dirname $HOME/$f)
 		ln -sf "$PWD/$f" "$HOME/$f"
 	done
