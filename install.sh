@@ -22,8 +22,8 @@ install_linux() {
 	# See discussion in https://fedoraproject.org/wiki/Changes/ReplaceDnfWithDnf5
 	if [ "$(readlink /usr/bin/dnf)" = "dnf-3" ]; then
 		echo "Replacing dnf-3 with dnf5" >&2
-		ln -sf dnf5 /usr/bin/dnf
-		ln -sf dnf5 /usr/bin/yum
+		sudo ln -sf dnf5 /usr/bin/dnf
+		sudo ln -sf dnf5 /usr/bin/yum
 	fi
 
 	# Enable RPM Fusion repositories
