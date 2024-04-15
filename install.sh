@@ -179,6 +179,8 @@ git submodule init && git submodule update
 # Link common content
 install_common
 
+# TODO: Set up nvs node/lts
+
 # Install OS-specific parts
 case "$(uname)" in
 	Darwin)
