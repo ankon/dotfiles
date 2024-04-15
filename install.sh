@@ -18,7 +18,13 @@ install_common() {
 
 install_linux() {
 	# Install dnf5 first
-	sudo dnf install -y dnf5
+	type -t dnf5 >/dev/null || sudo dnf install -y dnf5 dnf5-plugins
+	# See discussion in https://fedoraproject.org/wiki/Changes/ReplaceDnfWithDnf5
+	if [ "$(readlink /usr/bin/dnf)" = "dnf-3" ]; then
+		echo "Replacing dnf-3 with dnf5" >&2
+		ln -sf dnf5 /usr/bin/dnf
+		ln -sf dnf5 /usr/bin/yum
+	fi
 	
 	# Enable RPM Fusion repositories
 	sudo dnf5 install \
