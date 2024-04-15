@@ -149,12 +149,16 @@ EOF
 	systemctl enable --now --user mpd
 
 	# Install docker-compose
-	curl -SL https://github.com/docker/compose/releases/download/v2.24.6/docker-compose-linux-x86_64 -o ~/.local/bin/docker-compose
-	chmod +x ~/.local/bin/docker-compose
+	if ! command -v docker-compose; then
+		curl -SL https://github.com/docker/compose/releases/download/v2.24.6/docker-compose-linux-x86_64 -o ~/.local/bin/docker-compose
+		chmod +x ~/.local/bin/docker-compose
+	fi
 
 	# Install AWS CLI v2
-	curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
-	(cd /tmp && unzip awscliv2.zip && ./aws/install --bin-dir ~/.local/bin --install-dir ~/.local/aws-cli )
+	if ! command -v aws; then
+		curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
+		(cd /tmp && unzip awscliv2.zip && ./aws/install --bin-dir ~/.local/bin --install-dir ~/.local/aws-cli )
+	fi
 }
 
 install_darwin() {
