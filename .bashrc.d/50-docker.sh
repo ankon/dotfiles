@@ -18,3 +18,16 @@
 #      since moving to a dedicated volume?
 # XXX: Disabled for now for another test run
 #export DOCKER_BUILDKIT=0
+
+# Configure docker tools to use podman, if that is available
+podman_socket=$(podman info --format '{{.Host.RemoteSocket.Path}}' 2>/dev/null)
+if [ -n "${podman_socket}" ]; then
+	export DOCKER_HOST=unix://${podman_socket}
+fi
+unset podman_socket
+
+# On macOS, if colima is installed: Point to the colima socket. Note that this check
+# doesn't require colima to run.
+if [ -d "${HOME}/.colima" ]; then
+	export DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"
+fi

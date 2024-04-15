@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Save the original prompt
+export DOTFILES_ORIGINAL_PROMPT_COMMAND=$PROMPT_COMMAND
+export DOTFILES_ORIGINAL_PS1=$PS1

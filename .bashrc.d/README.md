@@ -14,4 +14,4 @@ fi
 unset rc
 ```
 
-This allows the dotfiles project to just define small snippets and install those, and not have to touch the default configuration at all.
+This allows the dotfiles project to just define small snippets and install those, and not have to touch the default configuration at all. The dotfiles `.bashrc` includes that snippet, but also sorts the files based on their name, so that there can be basic dependencies between them.
