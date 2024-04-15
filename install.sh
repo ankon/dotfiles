@@ -134,7 +134,11 @@ EOF
 	sudo touch /etc/containers/nodocker
 
 	# Configure git for the system
-	git config --global credential.helper /usr/libexec/git-core/git-credential-libsecret	
+	git config --global credential.helper /usr/libexec/git-core/git-credential-libsecret
+
+	# Install AWS CLI v2
+	curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
+	(cd /tmp && unzip awscliv2.zip && ./aws/install --bin-dir ~/.local/bin --install-dir ~/.local/aws-cli )
 }
 
 install_darwin() {
