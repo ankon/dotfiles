@@ -25,7 +25,7 @@ install_linux() {
 		ln -sf dnf5 /usr/bin/dnf
 		ln -sf dnf5 /usr/bin/yum
 	fi
-	
+
 	# Enable RPM Fusion repositories
 	sudo dnf5 install \
 		https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
@@ -42,6 +42,7 @@ install_linux() {
 		argyllcms \
 		blueman \
 		colordiff \
+		cmake \
 		fontconfig \
 		gimp \
 		git-credential-libsecret \
@@ -51,14 +52,16 @@ install_linux() {
 		gnupg2 \
 		htop \
 		iftop \
-		iotop \
+		iotop-c \
 		make \
 		mc \
 		nss-tools \
+		openssl \
 		patchutils \
 		pinentry-gtk \
 		podman \
 		podman-docker \
+		rpm-build \
 		rxvt-unicode \
 		screen \
 		simplescreenrecorder \
@@ -71,7 +74,11 @@ install_linux() {
 
 	# If running wayland/sway:
 	sudo dnf5 install \
-		wdisplays # replace arandr/xrandr
+		colord \
+		# replace arandr/xrandr
+		wdisplays \
+		wf-recorder \
+		slurp
 
 	# Install languages
 	sudo dnf5 install \

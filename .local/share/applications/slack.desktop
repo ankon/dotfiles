@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Slack
+StartupWMClass=Slack
+Comment=Slack Desktop
+GenericName=Slack Client for Linux
+# See https://www.guyrutenberg.com/2022/03/12/slack-screen-sharing-under-wayland/
+# See https://wiki.archlinux.org/title/wayland#Electron
+#Exec=env SLACK_DEVELOPER_MENU=true /usr/bin/slack --enable-features=WebRTCPipeWireCapturer --enable-features=UseOzonePlatform --ozone-platform=wayland %U
+Exec=env SLACK_DEVELOPER_MENU=true /usr/bin/slack --enable-webrtc-pipewire-capturer --enable-features=WebRTCPipeWireCapturer --enable-features=UseOzonePlatform --ozone-platform=wayland %U
+Icon=/usr/share/pixmaps/slack.png
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Network;InstantMessaging;
+MimeType=x-scheme-handler/slack;

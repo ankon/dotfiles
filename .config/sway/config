@@ -1,0 +1,4 @@
+# Force sway to see this config before the i3 one, but just divert to the system
+# default -- which will then pull back in our files from config.d.
+
+include /etc/sway/config
