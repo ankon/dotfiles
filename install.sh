@@ -55,6 +55,8 @@ install_linux() {
 		iotop-c \
 		make \
 		mc \
+		mpc \
+		mpd \
 		nss-tools \
 		openssl \
 		patchutils \
@@ -142,6 +144,9 @@ EOF
 
 	# Configure git for the system
 	git config --global credential.helper /usr/libexec/git-core/git-credential-libsecret
+
+	# Enable mpd as a user server
+	systemctl enable --now --user mpd
 
 	# Install docker-compose
 	curl -SL https://github.com/docker/compose/releases/download/v2.24.6/docker-compose-linux-x86_64 -o ~/.local/bin/docker-compose
