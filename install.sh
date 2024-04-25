@@ -131,6 +131,10 @@ EOF
 	for f in "$PWD/bin.Linux"/*; do
 		ln -sf "$f" "$HOME/.local/bin/$(basename $f)"
 	done
+	mkdir -p "$HOME/.local/share/applications"
+	for f in "$PWD/.local/share/applications"/*; do
+		ln -sf "$PWD/$f" "$HOME/$f"
+	done
 
 	# Enable notifications for blueman; if pairing fails disable these
 	# to hopefully switch it into the annoying-but-working "use dialog for everything"
