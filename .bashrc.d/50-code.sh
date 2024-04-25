@@ -1,10 +1,14 @@
 #!/bin/sh
 
+launch_code() {
+	nohup gtk-launch code-insiders -- "$@" >/dev/null 2>&1
+}
+
 code() {
 	# If there are arguments, pass them along. If there are none, or there is just a single
     # directory, look whether we can find a .code-workspace file with the same name as the directory
 	# and use that instead.
-	c=code-insiders
+	c=launch_code
 	if [ $# -gt 1 ]; then
 		"${c}" "$@"
     else
