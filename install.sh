@@ -44,6 +44,8 @@ install_linux() {
 		colordiff \
 		cmake \
 		fontconfig \
+		gcc \
+		gcc-c++ \
 		gimp \
 		git-credential-libsecret \
 		git-lfs \
@@ -57,6 +59,8 @@ install_linux() {
 		mc \
 		mpc \
 		mpd \
+		mpv \
+		mtr \
 		nss-tools \
 		openssl \
 		patchutils \
