@@ -41,6 +41,7 @@ install_linux() {
 		arandr \
 		argyllcms \
 		blueman \
+		btop \
 		colordiff \
 		cmake \
 		fontconfig \
