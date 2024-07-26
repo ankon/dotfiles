@@ -70,6 +70,7 @@ install_linux() {
 		podman-docker \
 		rpm-build \
 		rxvt-unicode \
+		seahorse \
 		screen \
 		simplescreenrecorder \
 		vim \
