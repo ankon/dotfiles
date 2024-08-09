@@ -1,3 +1,5 @@
+" NOTE: Comments in .vimrc use double-quotes!
+
 filetype plugin indent on
 
 syntax on
