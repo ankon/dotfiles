@@ -6,7 +6,7 @@ ELECTRON_OZONE_PLATFORM_HINT=auto
 
 # Default browser
 # This should be aligned with the xdg settings:
-XDG_DEFAULT_BROWSER=$(xdg-settings get default-web-browser)
+XDG_DEFAULT_BROWSER=$(xdg-settings get default-web-browser 2>/dev/null || echo "")
 if [ -n "${XDG_DEFAULT_BROWSER}" ]; then
 	BROWSER=${XDG_DEFAULT_BROWSER}
 fi
