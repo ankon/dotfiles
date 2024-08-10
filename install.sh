@@ -56,6 +56,7 @@ install_linux() {
 		htop \
 		iftop \
 		iotop-c \
+		logiops \
 		make \
 		mc \
 		mpc \
@@ -163,6 +164,10 @@ EOF
 		curl -SL https://github.com/docker/compose/releases/download/v2.24.6/docker-compose-linux-x86_64 -o ~/.local/bin/docker-compose
 		chmod +x ~/.local/bin/docker-compose
 	fi
+
+	# Configure logiops
+	# XXX: This might need some patching for https://github.com/PixlOne/logiops/issues/402
+	sudo cp etc.Linux/logid.cfg /etc/logid.cfg
 
 	# Install AWS CLI v2
 	if ! command -v aws; then
