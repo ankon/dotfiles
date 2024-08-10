@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
     "modules-center": ["sway/window"],
-    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature#cpu", "temperature#gpu", "clock", "tray"],
+    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature#cpu", "temperature#gpu", "clock", "custom/sunset", "tray"],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -143,6 +143,22 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    },
+    "custom/sunset": {
+        "interval": "once",
+        "tooltip": true,
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": {
+            "on": "☼",
+            "off": "☾"
+        },
+        "exec": "fallback_latitude=52.3 fallback_longitude=4.9 latitude= longitude= $HOME/.config/sway/scripts/sunset.sh",
+        "on-click": "$HOME/.config/sway/scripts/sunset.sh toggle",
+        "exec-if": "$HOME/.config/sway/scripts/sunset.sh check",
+        // See https://github.com/manjaro-sway/desktop-settings/blob/sway/community/sway/usr/bin/waybar-signal for inspiration,
+        // the adapted sunset.sh hardcodes this one.
+        "signal": 6
     }
 }
 
