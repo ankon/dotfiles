@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# See /etc/sway/environment
+
+# Enable debug logging:
+# Use `journalctl --user _COMM=sway`
+#
+# Extra verbosity can be had when combining `--verbose` and `--debug`
+SWAY_EXTRA_ARGS="$SWAY_EXTRA_ARGS --verbose --debug"
+
+# Allow software rendering
+# Needed for the touch display
+WLR_RENDERER_ALLOW_SOFTWARE=1
+
+# Use the vulkan renderer. This seems to help with the touch display
+# to avoid errors from the egl backend
+# Oct 03 23:25:56 minerva sway[11442]: 00:00:00.523 [ERROR] [wlr] [EGL] command: eglCreateImageKHR, error: EGL_BAD_ALLOC (0x3003), message: "createImageFromDmaBufs failed"
+# 
+# See also https://gitlab.freedesktop.org/mesa/mesa/-/issues/8431
+# See also https://gitlab.freedesktop.org/wlroots/wlroots/-/issues/3451
+# See also https://gitlab.freedesktop.org/wlroots/wlroots/-/merge_requests/3796
+#
+# Disabling the modifiers does not work:
+#WLR_EGL_NO_MODIFIERS=1
+#
+# Note that the vulkan renderer is experimental, so if this breaks switch
+# back to EGL.
+WLR_RENDERER=vulkan
+
