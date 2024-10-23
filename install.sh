@@ -171,6 +171,11 @@ EOF
 	# XXX: This might need some patching for https://github.com/PixlOne/logiops/issues/402
 	sudo ln -sf "$PWD/etc.Linux/logid.cfg" /etc/logid.cfg
 
+	# Configure tmpfiles.d
+	for f in "$PWD/etc.Linux/tmpfiles.d/*"; do
+		ln -sf "$f" "/etc/tmpfiles.d/$(basename $f)"
+	done
+
 	# Install AWS CLI v2
 	if ! command -v aws; then
 		curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
