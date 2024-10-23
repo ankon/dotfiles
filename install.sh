@@ -169,7 +169,7 @@ EOF
 
 	# Configure logiops
 	# XXX: This might need some patching for https://github.com/PixlOne/logiops/issues/402
-	sudo cp etc.Linux/logid.cfg /etc/logid.cfg
+	sudo ln -sf "$PWD/etc.Linux/logid.cfg" /etc/logid.cfg
 
 	# Install AWS CLI v2
 	if ! command -v aws; then
