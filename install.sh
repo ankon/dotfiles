@@ -44,6 +44,7 @@ install_linux() {
 		btop \
 		colordiff \
 		cmake \
+		fastfetch \
 		fontconfig \
 		gcc \
 		gcc-c++ \
