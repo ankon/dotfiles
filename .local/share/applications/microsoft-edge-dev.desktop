@@ -105,8 +105,7 @@ Comment[vi]=Truy cập Internet
 Comment[zh_CN]=访问互联网
 Comment[zh_HK]=連線到網際網路
 Comment[zh_TW]=連線到網際網路
-Exec=/usr/bin/microsoft-edge-dev -ozone-platform=wayland %U
-#Exec=/usr/bin/microsoft-edge-dev -enable-features=UseOzonePlatform -ozone-platform=wayland %U
+Exec=/usr/bin/microsoft-edge-dev %U
 StartupNotify=true
 Terminal=false
 Icon=microsoft-edge-dev
