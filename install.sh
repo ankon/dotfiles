@@ -65,6 +65,7 @@ install_linux() {
 		mpv \
 		mtr \
 		nss-tools \
+		openssh-askpass \
 		openssl \
 		patchutils \
 		pinentry-gtk \
