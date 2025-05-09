@@ -5,6 +5,11 @@
 ELECTRON_OZONE_PLATFORM_HINT=auto
 export ELECTRON_OZONE_PLATFORM_HINT
 
+# Firefox: Use wayland when we're in a wayland session
+if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
+    export MOZ_ENABLE_WAYLAND=1
+fi
+
 # Default browser
 # This should be aligned with the xdg settings:
 XDG_DEFAULT_BROWSER=$(xdg-settings get default-web-browser 2>/dev/null || echo "")
