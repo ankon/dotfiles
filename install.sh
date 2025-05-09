@@ -93,6 +93,11 @@ install_linux() {
 		wf-recorder \
 		slurp
 
+	# Change the default editor and remove nano
+	sudo dnf5 install --allowerasing \
+		vim-default-editor
+	sudo dnf5 remove nano
+
 	# Install languages
 	sudo dnf5 install \
 		golang-bin golang-src \
