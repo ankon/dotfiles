@@ -13,7 +13,7 @@ if [ -n "${SSH_ASKPASS}" ]; then
 		SSH_ASKPASS=
 		for maybe_askpass in /usr/libexec/openssh/ssh-askpass /usr/libexec/gnome-ssh-askpass; do
 			if command -v "${maybe_askpass}" >/dev/null 2>&1; then
-				SSH_ASKPASS=${makybe_askpass}
+				SSH_ASKPASS=${maybe_askpass}
 				break
 			fi
 		done
