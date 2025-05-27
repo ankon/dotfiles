@@ -14,6 +14,14 @@ install_common() {
 	for f in gpg-wrapper; do
 		ln -sf "$PWD/bin/$f" "$HOME/.local/bin/$f"
 	done
+
+	# Include the ~/.ssh/config.d contents
+	if grep 'Include config.d/*' $HOME/.ssh/config >/dev/null 2>&1; then
+		# All good
+		:
+	else
+		(echo 'Include config.d/*'; cat "$HOME/.ssh/config") > /tmp/ssh_config && mv /tmp/ssh_config "$HOME/.ssh/config"
+	fi
 }
 
 install_linux() {
