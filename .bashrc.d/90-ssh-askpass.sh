@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# Don't use a graphical prompt if there is no graphical display
+if [ -z "${DISPLAY}" ] && [ -z "${WAYLAND_DISPLAY}" ]; then
+	SSH_ASKPASS=
+	export SSH_ASKPASS
+	return	
+fi
+
 # kde-settings gets installed by a bunch of things (such as libreoffice and java) and
 # sets `SSH_ASKPASS` to /usr/bin/ksshaskpass -- but that's not depended upon.
 if [ -n "${SSH_ASKPASS}" ]; then
