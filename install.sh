@@ -134,6 +134,10 @@ gpgkey=https://packages.microsoft.com/keys/microsoft.asc
 EOF
 	sudo dnf5 install microsoft-edge-dev code-insiders
 
+	sudo dnf copr enable erikreider/SwayNotificationCenter
+	sudo dnf install SwayNotificationCenter
+	sudo dnf remove dunst
+
 	# Install custom mime types
 	for config in .local/share/mime/*.xml; do
 	    xdg-mime install "${config}"
