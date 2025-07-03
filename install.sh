@@ -96,6 +96,7 @@ install_linux() {
 		colord \
 		# For wayland-info
 		wayland-utils \
+		waypipe \
 		# replace arandr/xrandr
 		wdisplays \
 		wf-recorder \
