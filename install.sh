@@ -135,8 +135,10 @@ gpgkey=https://packages.microsoft.com/keys/microsoft.asc
 EOF
 	sudo dnf5 install microsoft-edge-dev code-insiders
 
-	sudo dnf copr enable erikreider/SwayNotificationCenter
-	sudo dnf install SwayNotificationCenter
+	if ! rpm -q SwayNotificationCenter; then
+		sudo dnf copr enable erikreider/SwayNotificationCenter
+		sudo dnf install SwayNotificationCenter
+	fi
 	sudo dnf remove dunst
 
 	# Install custom mime types
