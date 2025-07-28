@@ -196,7 +196,7 @@ EOF
 
 	# Configure tmpfiles.d
 	for f in "$PWD/etc.Linux/tmpfiles.d/*"; do
-		ln -sf "$f" "/etc/tmpfiles.d/$(basename $f)"
+		sudo ln -sf "$f" "/etc/tmpfiles.d/$(basename $f)"
 	done
 
 	# Install AWS CLI v2
