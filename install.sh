@@ -26,6 +26,23 @@ install_common() {
 	fi
 }
 
+install_linux_MacBookPro11_1() {
+	# Install broadcom BCM4360 driver
+	cat <<EOF | sudo tee /etc/modprobe.d/wl-blacklist.conf
+# Blacklist the other broadcom drivers
+blacklist ssb
+blacklist b43
+blacklist brcmsmac
+EOF
+
+	sudo modprobe -r b43
+
+	sudo dnf5 install kernel-devel-$(uname -r) kmod-wl
+	sudo akmods
+
+	sudo modprobe wl
+}
+
 install_linux() {
 	# Install dnf5 first
 	type -t dnf5 >/dev/null || sudo dnf install -y dnf5 dnf5-plugins
@@ -216,6 +233,12 @@ EOF
 		_aws_update=--update
 	fi
 	(cd /tmp && rm -rf aws && unzip -q awscliv2.zip && ./aws/install --bin-dir ~/.local/bin --install-dir ~/.local/aws-cli ${_aws_update} && aws --version && rm -rf aws /tmp/awscliv2.zip)
+
+	# Run machine-specific installation steps
+	_machine_install=$(echo "install_linux_${MACHINE}" | tr -c '[:alnum:]' '_')
+	if command -v ${_machine_install}; then
+		${_machine_install}
+	fi	
 }
 
 install_darwin() {
