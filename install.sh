@@ -94,10 +94,8 @@ install_linux() {
 	# If running wayland/sway:
 	sudo dnf5 install \
 		colord \
-		# For wayland-info
 		wayland-utils \
 		waypipe \
-		# replace arandr/xrandr
 		wdisplays \
 		wf-recorder \
 		slurp
