@@ -289,7 +289,13 @@ git submodule init && git submodule update
 # Link common content
 install_common
 
-# TODO: Set up nvs node/lts
+# Configure NodeJS
+export NVS_ROOT="$DOTFILES_HOME/third-party/nvs"
+export NVS_HOME="$HOME/modules/nvs"
+[ -s "$NVS_ROOT/nvs.sh" ] && . "$NVS_ROOT/nvs.sh"
+
+nvs use node/lts >/dev/null 2>&1 || nvs add node/lts
+
 # TODO: Set up sshd.service (sometimes)
 
 # Install OS-specific parts
