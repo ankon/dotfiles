@@ -180,9 +180,14 @@ EOF
 	systemctl enable --now --user mpd
 
 	# Install docker-compose
-	if ! command -v docker-compose; then
-		curl -SL https://github.com/docker/compose/releases/download/v2.24.6/docker-compose-linux-x86_64 -o ~/.local/bin/docker-compose
-		chmod +x ~/.local/bin/docker-compose
+	DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+	if test -x "${DOCKER_CONFIG}/cli-plugins/docker-compose"; then
+		mkdir -p $DOCKER_CONFIG/cli-plugins
+		curl -SL https://github.com/docker/compose/releases/download/v2.39.1/docker-compose-linux-$(uname -m) -o "${DOCKER_CONFIG}/cli-plugins/docker-compose"
+		chmod +x "${DOCKER_CONFIG}/cli-plugins/docker-compose"
+
+		# Clean up from previous setups
+		rm -f ~/.local/bin/docker-compose
 	fi
 
 	# Configure logiops
