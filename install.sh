@@ -3,6 +3,8 @@
 echo "WARNING: Incomplete, and will likely destroy existing configuration" >&2
 exit 1
 
+MACHINE=$(sudo dmidecode -s system-product-name)
+
 install_common() {
 	for f in .gitconfig .vimrc .vim/colors/* .gdbinit .Xresources .bash_profile .bashrc .bashrc.d/*.sh .ssh/config.d/*; do
 		mkdir -p $(dirname $HOME/$f)
@@ -198,6 +200,12 @@ EOF
 	for f in "$PWD/etc.Linux/tmpfiles.d/*"; do
 		sudo ln -sf "$f" "/etc/tmpfiles.d/$(basename $f)"
 	done
+
+	# Install services to configure system-dependent things
+	for f in $(find "$PWD/etc.Linux/systemd/system" "$PWD/etc.Linux.${MACHINE}/systemd/system" -type f 2>/dev/null); do
+		sudo ln -sf "$f" "/etc/systemd/system/$(basename $f)"
+	done
+	sudo systemctl daemon-reload
 
 	# Install AWS CLI v2
 	curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"

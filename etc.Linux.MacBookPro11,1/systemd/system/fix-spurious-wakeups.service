@@ -1,0 +1,6 @@
+[Service]
+Type=oneshot
+ExecStart=sh -c "echo XHC1 > /proc/acpi/wakeup"
+RemainAfterExit=true
+[Install]
+WantedBy=multi-user.target
