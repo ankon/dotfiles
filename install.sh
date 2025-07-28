@@ -200,10 +200,12 @@ EOF
 	done
 
 	# Install AWS CLI v2
-	if ! command -v aws; then
-		curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
-		(cd /tmp && unzip awscliv2.zip && ./aws/install --bin-dir ~/.local/bin --install-dir ~/.local/aws-cli )
+	curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
+	_aws_update=
+	if command -v aws; then
+		_aws_update=--update
 	fi
+	(cd /tmp && rm -rf aws && unzip -q awscliv2.zip && ./aws/install --bin-dir ~/.local/bin --install-dir ~/.local/aws-cli ${_aws_update} && aws --version && rm -rf aws /tmp/awscliv2.zip)
 }
 
 install_darwin() {
