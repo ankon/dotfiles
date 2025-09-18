@@ -237,6 +237,8 @@ EOF
 	done
 	sudo systemctl daemon-reload
 
+	# XXX: Switch to zip-based
+	sudo dnf5 install -y https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm
 
 	# Run machine-specific installation steps
 	_machine_install=$(echo "install_linux_${MACHINE}" | tr -c '[:alnum:]' '_')
