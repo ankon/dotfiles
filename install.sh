@@ -24,6 +24,9 @@ install_common() {
 	else
 		(echo 'Include config.d/*'; cat "$HOME/.ssh/config") > /tmp/ssh_config && mv /tmp/ssh_config "$HOME/.ssh/config"
 	fi
+
+	# https://github.com/samwho/spacer
+	cargo install spacer
 }
 
 install_linux_MacBookPro11_1() {
