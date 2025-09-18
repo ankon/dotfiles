@@ -9,9 +9,9 @@ set ts=4
 set sw=4
 set smartindent
 set backspace=indent,eol,start
-set background=dark
+"set background=dark
 set ruler
 set hlsearch
 set incsearch
-colorscheme greenwint
+"colorscheme greenwint
 
