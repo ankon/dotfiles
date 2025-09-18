@@ -27,6 +27,14 @@ install_common() {
 
 	# https://github.com/samwho/spacer
 	cargo install spacer
+
+	# Install AWS CLI v2
+	curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
+	_aws_update=
+	if command -v aws; then
+		_aws_update=--update
+	fi
+	(cd /tmp && rm -rf aws && unzip -q awscliv2.zip && ./aws/install --bin-dir ~/.local/bin --install-dir ~/.local/aws-cli ${_aws_update} && aws --version && rm -rf aws /tmp/awscliv2.zip)
 }
 
 install_linux_MacBookPro11_1() {
@@ -229,19 +237,12 @@ EOF
 	done
 	sudo systemctl daemon-reload
 
-	# Install AWS CLI v2
-	curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
-	_aws_update=
-	if command -v aws; then
-		_aws_update=--update
-	fi
-	(cd /tmp && rm -rf aws && unzip -q awscliv2.zip && ./aws/install --bin-dir ~/.local/bin --install-dir ~/.local/aws-cli ${_aws_update} && aws --version && rm -rf aws /tmp/awscliv2.zip)
 
 	# Run machine-specific installation steps
 	_machine_install=$(echo "install_linux_${MACHINE}" | tr -c '[:alnum:]' '_')
 	if command -v ${_machine_install}; then
 		${_machine_install}
-	fi	
+	fi
 }
 
 install_darwin() {
