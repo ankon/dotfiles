@@ -240,6 +240,10 @@ EOF
 	# XXX: Switch to zip-based
 	sudo dnf5 install -y https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm
 
+	# Install the github CLI
+	sudo dnf config-manager addrepo --from-repofile=https://cli.github.com/packages/rpm/gh-cli.repo
+	sudo dnf install gh --repo gh-cli
+
 	# Run machine-specific installation steps
 	_machine_install=$(echo "install_linux_${MACHINE}" | tr -c '[:alnum:]' '_')
 	if command -v ${_machine_install}; then
