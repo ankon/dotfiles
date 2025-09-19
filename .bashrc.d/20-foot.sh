@@ -1,11 +1,5 @@
 #!/bin/sh
 
-# Add prompt markers, so that foot can jump between them using ctrl+shift+z/x
-#
-# See https://codeberg.org/dnkl/foot/wiki#user-content-jumping-between-prompts
-prompt_marker() {
-    printf '\e]133;A\e\\'
-}
 
 # Emit OSC-7 to report the current working directory.
 #
@@ -26,4 +20,4 @@ osc7_cwd() {
     printf '\e]7;file://%s%s\e\\' "${HOSTNAME}" "${encoded}"
 }
 
-PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND;}"prompt_marker;osc7_cwd"
+PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND;}"osc7_cwd"
