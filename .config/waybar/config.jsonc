@@ -5,9 +5,27 @@
     // "width": 1280, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature#cpu", "temperature#gpu", "clock", "custom/sunset", "tray"],
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode",
+        "sway/scratchpad"
+    ],
+    "modules-center": [
+        "sway/window"
+    ],
+    "modules-right": [
+        "mpd",
+        "idle_inhibitor",
+        "pulseaudio",
+        "network",
+        "cpu",
+        "memory",
+        "temperature#cpu",
+        "temperature#gpu",
+        "clock",
+        "custom/sunset",
+        "tray"
+    ],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -31,12 +49,15 @@
     "sway/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
-        "format-icons": ["", ""],
+        "format-icons": [
+            "",
+            ""
+        ],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
     "mpd": {
-		"server": "/run/user/1000/mpd.sock",
+        "server": "/run/user/1000/mpd.sock",
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
         "format-disconnected": "Disconnected ",
         "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
@@ -62,8 +83,8 @@
         "tooltip-format": "MPD (connected)",
         "tooltip-format-disconnected": "MPD (disconnected)",
         "on-click": "mpc -h /run/user/1000/mpd.sock toggle",
-		"on-scroll-up": "mpc -h /run/user/1000/mpd.sock prev",
-		"on-scroll-down": "mpc -h /run/user/1000/mpd.sock next"
+        "on-scroll-up": "mpc -h /run/user/1000/mpd.sock prev",
+        "on-scroll-down": "mpc -h /run/user/1000/mpd.sock next"
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -91,18 +112,24 @@
         "format": "{}% "
     },
     "temperature#cpu": {
-        "hwmon-path": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon3/temp1_input",
+        // The one that has k10temp in the /name
+        "hwmon-path": "/sys/class/hwmon/hwmon4/temp1_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "CPU {temperatureC}°C {icon}",
-        "format-icons": [""] 
-	},
+        "format-icons": [
+            ""
+        ]
+    },
     "temperature#gpu": {
-        "hwmon-path": "/sys/devices/pci0000:00/0000:00:08.1/0000:c4:00.0/hwmon/hwmon2/temp1_input",
+        // The one that has amdgpu in the /name
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "GPU {temperatureC}°C {icon}",
-        "format-icons": [""] 
+        "format-icons": [
+            ""
+        ]
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -128,7 +155,11 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
         "on-click": "pavucontrol"
     },
