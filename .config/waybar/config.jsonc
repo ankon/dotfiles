@@ -24,6 +24,7 @@
         "temperature#gpu",
         "clock",
         "custom/sunset",
+        "custom/toggle-theme",
         "tray"
     ],
     // Modules configuration
@@ -179,7 +180,7 @@
         "interval": "once",
         "tooltip": true,
         "return-type": "json",
-        "format": "{icon}",
+        "format": "Gamma: {icon}",
         "format-icons": {
             "on": "☼",
             "off": "☾"
@@ -190,6 +191,10 @@
         // See https://github.com/manjaro-sway/desktop-settings/blob/sway/community/sway/usr/bin/waybar-signal for inspiration,
         // the adapted sunset.sh hardcodes this one.
         "signal": 6
+    },
+    "custom/toggle-theme": {
+        "interval": "once",
+        "format": "Theme",
+        "on-click": "if test $(gsettings get org.gnome.desktop.interface color-scheme | xargs echo) = 'prefer-dark'; then gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'; else gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'; fi"
     }
 }
-
