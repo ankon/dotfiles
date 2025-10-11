@@ -22,3 +22,4 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 export NPM_TOKEN=$(sed -nE "s/\/\/registry.(yarnpkg.com|npmjs.org)\/:_authToken=//p" $HOME/.npmrc)
+export GITHUB_TOKEN=$(awk 'BEGIN{FS="="}/[^#]*ghp/{print $2}' < ~/.stratus.toml | tr -d " '")
