@@ -3,7 +3,7 @@
 launch_code() {
 	case $(uname -s) in
 	Darwin)
-		open --new -a "Visual Studio Code - Insiders" -- "$@" >/dev/null 2>&1
+		"/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin/code" --new-window "$@" >/dev/null 2>&1
 		;;
 	*)
 		nohup gtk-launch code-insiders -- "$@" >/dev/null 2>&1
