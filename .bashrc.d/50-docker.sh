@@ -19,6 +19,10 @@
 # XXX: Disabled for now for another test run
 #export DOCKER_BUILDKIT=0
 
+# Make the docker CLI shut up about "new features"
+# See also https://forums.docker.com/t/how-to-turn-off-the-whats-new-message/140860
+export DOCKER_CLI_HINTS=false
+
 # Configure docker tools to use podman, if that is available
 podman_socket=$(podman info --format '{{.Host.RemoteSocket.Path}}' 2>/dev/null)
 if [ -n "${podman_socket}" ]; then
