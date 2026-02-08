@@ -6,6 +6,7 @@ exit 1
 MACHINE=$(sudo dmidecode -s system-product-name)
 
 install_common() {
+	# See also install_linux for the handling of ~/.config
 	for f in .gitconfig .vimrc .vim/colors/* .gdbinit .Xresources .bash_profile .bashrc .bashrc.d/*.sh .ssh/config.d/*; do
 		mkdir -p $(dirname $HOME/$f)
 		ln -sf "$PWD/$f" "$HOME/$f"
@@ -180,11 +181,18 @@ EOF
 	find third-party/JetBrainsMono/fonts/ -type f -exec cp {} "$HOME/.local/share/fonts" \;
 	fc-cache -f
 
+	# XXX: This symlinks .config/sway.d/config.d instead of files inside it.
 	for d in .config/*; do
 		mkdir -p "$HOME/$d"
 		for f in "$d"/*; do
 			ln -sf "$PWD/$f" "$HOME/$f"
 		done
+	done
+
+	# Install keyboard layouts
+	mkdir -p "$HOME/.xkb/symbols"
+	for f in .xkb/symbols/*; do
+		ln -sf "$PWD/$f" "$HOME/.xkb/symbols/$f"
 	done
 
 	for f in "$PWD/bin.Linux"/*; do
