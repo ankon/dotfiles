@@ -40,6 +40,8 @@ install_common() {
 	# mise: install, and activate immediately for the current shell
 	curl https://mise.run | sh
 	eval "$(~/.local/bin/mise activate bash)"
+	mise install
+	mise list
 }
 
 install_linux_MacBookPro11_1() {
@@ -310,9 +312,6 @@ git submodule init && git submodule update
 
 # Link common content
 install_common
-
-# Configure NodeJS
-mise use --global node@lts
 
 # TODO: Set up sshd.service (sometimes)
 
