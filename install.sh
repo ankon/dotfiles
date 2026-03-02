@@ -36,6 +36,9 @@ install_common() {
 		_aws_update=--update
 	fi
 	(cd /tmp && rm -rf aws && unzip -q awscliv2.zip && ./aws/install --bin-dir ~/.local/bin --install-dir ~/.local/aws-cli ${_aws_update} && aws --version && rm -rf aws /tmp/awscliv2.zip)
+
+	# mise
+	curl https://mise.run | sh
 }
 
 install_linux_MacBookPro11_1() {
