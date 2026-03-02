@@ -37,8 +37,9 @@ install_common() {
 	fi
 	(cd /tmp && rm -rf aws && unzip -q awscliv2.zip && ./aws/install --bin-dir ~/.local/bin --install-dir ~/.local/aws-cli ${_aws_update} && aws --version && rm -rf aws /tmp/awscliv2.zip)
 
-	# mise
+	# mise: install, and activate immediately for the current shell
 	curl https://mise.run | sh
+	eval "$(~/.local/bin/mise activate bash)"
 }
 
 install_linux_MacBookPro11_1() {
@@ -311,11 +312,7 @@ git submodule init && git submodule update
 install_common
 
 # Configure NodeJS
-export NVS_ROOT="$DOTFILES_HOME/third-party/nvs"
-export NVS_HOME="$HOME/modules/nvs"
-[ -s "$NVS_ROOT/nvs.sh" ] && . "$NVS_ROOT/nvs.sh"
-
-nvs use node/lts >/dev/null 2>&1 || nvs add node/lts
+mise use --global node@lts
 
 # TODO: Set up sshd.service (sometimes)
 
