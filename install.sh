@@ -267,7 +267,6 @@ EOF
 
 install_darwin() {
 	# Install software
-	# XXX: This requires homebrew to use /usr/local as prefix; on Apple Silicon that is by default not the case!
 	brew install \
 		bash \
 		colima \
@@ -286,8 +285,9 @@ install_darwin() {
 	mkdir -p ~/.gnupg
 	ln -sf $PWD/.gnupg.Darwin/gpg-agent.conf ~/.gnupg/gpg-agent.conf
 
-	echo /usr/local/bin/bash | sudo tee -a /etc/shells
-	chsh -s /usr/local/bin/bash
+	_shell=$(brew --prefix)/bin/bash
+	grep ${_shell} /etc/shells || echo ${_shell} | sudo tee -a /etc/shells
+	chsh -s ${_shell}
 
 	for f in code docker; do
 		ln -sf "$PWD/bin.Darwin/$f" "$HOME/.local/bin/$f"
