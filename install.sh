@@ -116,6 +116,7 @@ install_linux() {
 		pinentry-gtk \
 		podman \
 		podman-docker \
+		powerline-fonts \
 		rpm-build \
 		rxvt-unicode \
 		seahorse \
@@ -305,6 +306,9 @@ install_darwin() {
 
 	# Configure git for the system
 	git config --global credential.helper osxkeychain
+
+	# Install powerline fonts
+	$(cd third-party/fonts && ./install.sh)
 }
 
 # Ensure submodule things are initialized

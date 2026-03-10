@@ -9,3 +9,6 @@
 	path = third-party/JetBrainsMono
 	url = https://github.com/JetBrains/JetBrainsMono
 	shallow = true
+[submodule "third-party/fonts"]
+	path = third-party/fonts
+	url = https://github.com/powerline/fonts.git
