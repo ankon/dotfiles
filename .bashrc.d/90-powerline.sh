@@ -12,6 +12,6 @@ function _update_ps1() {
 }
 
 if [ "$TERM" != "linux" ] && command -v powerline-go >/dev/null 2>&1; then
-    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+    PROMPT_COMMAND="$PROMPT_COMMAND; _update_ps1"
 fi
 
