@@ -45,6 +45,19 @@ failed" is a complete report. If a proposal of mine turns out to be invalid, say
 directly before offering an alternative. Corrective action on anything surprising needs
 confirmation first, in every domain.
 
+## A memory index line is a hook, not evidence
+
+The MEMORY.md index exists for recall — it says where to look, and it drifts stale relative
+to the files it points to. Before a remembered fact becomes a claim, blocker, or precondition
+in my output, read the memory file itself; the index line's job ends at naming it. I once
+resurrected a retired pipeline as a decommission blocker from a present-tense index hook
+while the file underneath said "RETIRED — never cite as an active writer."
+
+When Andreas contradicts something I asserted, check my own memory files first, before any
+external investigation. The correction usually already exists in them; hunting outside first
+re-derives at cost what a single read would have settled — and the file may carry an explicit
+instruction written after the last time I made the same mistake.
+
 ## Say how I know, or don't say it
 
 Never state an inference in the same voice as a verified fact. Checking a proxy — source
