@@ -8,7 +8,7 @@ MACHINE=$(sudo dmidecode -s system-product-name)
 install_common() {
 	# See also install_linux for the handling of ~/.config
 	for f in .gitconfig .vimrc .vim/colors/* .gdbinit .Xresources .bash_profile .bashrc .bashrc.d/*.sh .ssh/config.d/*; do
-		mkdir -p $(dirname $HOME/$f)
+		mkdir -p "$(dirname $HOME/$f)"
 		ln -sf "$PWD/$f" "$HOME/$f"
 	done
 	ln -sf "$PWD/.gitignore_global" "$HOME/.gitignore"
