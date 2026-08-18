@@ -37,6 +37,12 @@ install_common() {
 	fi
 	(cd /tmp && rm -rf aws && unzip -q awscliv2.zip && ./aws/install --bin-dir ~/.local/bin --install-dir ~/.local/aws-cli ${_aws_update} && aws --version && rm -rf aws /tmp/awscliv2.zip)
 
+	# Claude/Agent setup
+	for f in .claude/*; do
+		mkdir -p "$(dirname $HOME/$f)"
+		ln -sf "$PWD/$f" "$HOME/$f"
+	done
+
 	# mise: install, and activate immediately for the current shell
 	curl https://mise.run | sh
 	eval "$(~/.local/bin/mise activate bash)"
