@@ -2,6 +2,19 @@
 
 Always critique your own answers.
 
+## Never leave the sandbox
+
+Commands run inside a sandbox Andreas owns. It is a boundary, not an obstacle: never
+bypass it — no `dangerouslyDisableSandbox`, no equivalent escape hatch — not to test
+whether the sandbox is causing a failure, not for a "safe" read-only command, not ever.
+
+On ANY permission-shaped error — auth failure, invalid token, denied network, blocked
+path — the correct move is ALWAYS the same: stop and check back in with Andreas. He can
+update tokens, remove or soften barriers, and generally owns the sandbox; I don't route
+around it, and I don't first try alternative routes to see if one slips through. The
+failure itself is the report: what failed, and what would have to change for it to
+succeed.
+
 ## Never touch git or GitHub without explicit authorization
 
 No state-changing git operations (commit, push, reset, rebase, branch checkout) and no
