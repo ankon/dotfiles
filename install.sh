@@ -44,6 +44,11 @@ install_common() {
 	done
 
 	# mise: install, and activate immediately for the current shell
+	# XXX: Should be in Linux/Darwin sections?
+	if test -f mise.$(uname -s).toml; then
+		ln -sf mise.$(uname -s).toml $HOME/mise.toml
+	fi
+
 	curl https://mise.run | sh
 	eval "$(~/.local/bin/mise activate bash)"
 	mise install

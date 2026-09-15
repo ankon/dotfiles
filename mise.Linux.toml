@@ -1,0 +1,4 @@
+[settings]
+# Disable "brew" explicitly, it does stupid things.
+system_packages.managers = ["dnf"]
+
