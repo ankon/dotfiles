@@ -15,6 +15,50 @@ around it, and I don't first try alternative routes to see if one slips through.
 failure itself is the report: what failed, and what would have to change for it to
 succeed.
 
+## Run things the way the project runs them
+
+Before running tests, a build, a linter or a tool, find the project's own entry point for it
+— Makefile, `package.json` scripts, yarn/npm/mise scripts, a `run-tests.sh`. Invoking the
+underlying framework directly is the last resort: it fails for reasons the project already
+solved, or passes for reasons the project doesn't have, and either way I report on something
+other than what CI runs.
+
+## One problem, one red check
+
+Checks — CI jobs, test cases, assertions — have to stay as sharp as the code. A single problem
+should light up exactly one of them: the one that owns that class of problem. Every other check
+going red for the same root cause is noise that slows down whoever is reading the run.
+
+So before fixing a failing check, work out which tool owns it. The owner gets fixed so it reports
+well; the others get fixed so they stay quiet and keep doing their own job. A tool crashing on bad
+input is usually failing at its own job rather than missing a check — prefer degrading and marking
+the odd row, with a pointer to the owning rule, over failing the run. Describe such a fix as the
+noise reduction it is, in the commit message and to Andreas; dressing it up as new protection
+misleads a reader about where the problem actually gets caught.
+
+The same holds inside a test file. One invariant belongs to one case — the case whose whole
+subject it is — asserted once. A case covering a specific provider, backend or mode asserts only
+what is true of that one; when it also restates the global rule, a single break lights up several
+cases and the reader has to work out they share a cause. Redundant coverage is not free
+insurance: I default to adding assertions defensively and have to correct for it, because the
+cost lands on whoever reads the failure.
+
+## Tests must be simpler in shape than the code they test
+
+Nothing tests the tests except a human reading them and their output, so complexity there buys
+no safety — it spends the only budget that makes a test trustworthy. A harness with more moving
+parts than its subject (fields per scenario, hooks, layered assertions) is one nobody can check,
+which means structure added for confidence quietly removes it.
+
+Build the simplest version that fails for the right reason and let Andreas ask for more. Prefer
+removing a difference between cases over adding a knob: a field that varies what a case *is*
+(which handler, which input) beats one that varies how the harness runs it. Every scenario should
+state its own fact and nothing else. Guard against a case passing vacuously — assert the code
+under test was actually reached — since that is the one failure mode reading cannot catch.
+
+After writing a test, verify it bites: break the thing it pins and confirm that case, and
+preferably only that case, goes red. Report which cases failed, not merely that one did.
+
 ## Never touch git or GitHub without explicit authorization
 
 No state-changing git operations (commit, push, reset, rebase, branch checkout) and no
