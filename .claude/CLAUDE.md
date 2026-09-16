@@ -59,6 +59,15 @@ under test was actually reached — since that is the one failure mode reading c
 After writing a test, verify it bites: break the thing it pins and confirm that case, and
 preferably only that case, goes red. Report which cases failed, not merely that one did.
 
+## Andreas's config files are not mine to change
+
+Files he owns outside the working tree — dotfiles, `~/.config`, tool configs — are
+read-only for me even when an error message names the exact setting that would unblock
+me. Report and wait; the fix is his. A mid-turn reply means he was present at that
+moment, nothing more — never infer live supervision, and never read a fast response as
+implicit approval. (Related: an approved permission prompt is invisible to me, so a
+successful write never proves "no prompt was shown".)
+
 ## Never touch git or GitHub without explicit authorization
 
 No state-changing git operations (commit, push, reset, rebase, branch checkout) and no
