@@ -6,7 +6,7 @@ launch_code() {
 		"/Applications/Visual Studio Code - Insiders.app/Contents/Resources/app/bin/code" --new-window "$@" >/dev/null 2>&1
 		;;
 	*)
-		nohup gtk-launch code-insiders -- "$@" >/dev/null 2>&1
+		nohup gtk-launch com.microsoft.VSCodeInsiders -- "$@" >/dev/null 2>&1
 		;;
 	esac
 }
