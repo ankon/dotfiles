@@ -43,6 +43,11 @@ cases and the reader has to work out they share a cause. Redundant coverage is n
 insurance: I default to adding assertions defensively and have to correct for it, because the
 cost lands on whoever reads the failure.
 
+The same holds across test files. When a lower layer's tests own a rule (token validation,
+parsing), the caller's tests stub that layer behind an interface and cover only what the caller
+does with its answers — a rejected token becomes a 401 — instead of re-running the rule through
+real keys and servers.
+
 ## Tests must be simpler in shape than the code they test
 
 Nothing tests the tests except a human reading them and their output, so complexity there buys
@@ -56,8 +61,38 @@ removing a difference between cases over adding a knob: a field that varies what
 state its own fact and nothing else. Guard against a case passing vacuously — assert the code
 under test was actually reached — since that is the one failure mode reading cannot catch.
 
+A big, realistic fixture is a smell. It bundles several facts into one case, so a failure
+doesn't say which one broke; its decoration (plausible function bodies, extra files) hides
+which parts the assertion rests on; and its parts cover for each other — a handler that
+happened to import the server file hid that no test checked server files as walk roots. Take
+inventory of what each part pins, then give each fact its own case with the smallest input that
+triggers it. Every part of a fixture is load-bearing: what a reader could delete without a case
+going red is noise. One case asserts the full output shape; the rest assert only the part their
+fact touches. A value the test passes in and expects back gets a name, so the round trip reads
+as one.
+
+Pin only what someone relies on. Before asserting an output detail — `[]` versus `null`, an
+ordering — check that a consumer depends on it; if none does, the better fix may be to stop
+promising it (`omitempty`) rather than to defend it with a test.
+
 After writing a test, verify it bites: break the thing it pins and confirm that case, and
-preferably only that case, goes red. Report which cases failed, not merely that one did.
+preferably only that case, goes red. Report which cases failed, not merely that one did. A
+mutant with no failures proves nothing until I've confirmed the tests ran against it: one that
+doesn't compile, or one the surrounding code makes equivalent to the original, reports "all
+green" for the wrong reason. Where behaviour depends on randomness such as map order, run the
+mutant many times, report the detection rate, and strengthen the input until it is reliable.
+
+## Tests don't get to know the implementation
+
+Tests are black-box, at most gray-box: what I know from reading the code under test is not a
+premise a test may rest on. "It has no internal state" is exactly such knowledge, so each case
+constructs its own instance of the subject; only inputs the test builds itself (keys, fixtures,
+tokens) may be shared between cases. When I justify a test's structure, I argue from what the
+test cannot assume, not from what the code happens to do today.
+
+A hard-coded value in a test is either a dummy or something that gets asserted, directly or
+through its effect: a limit test writes `16<<20` itself, so a changed limit goes red. Where the
+value is incidental to what the case checks, use the implementation's constant instead.
 
 ## Andreas's config files are not mine to change
 
