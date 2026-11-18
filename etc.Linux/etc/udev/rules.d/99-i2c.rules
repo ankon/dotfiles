@@ -1,0 +1,5 @@
+# Allow all users in the i2c group to access i2c buses
+# Specifically: bus 1 is the Samsung display, and bus 9 is the LG display -- see `ddcutil detect`.
+#
+# Create the group using `groupadd --system i2c`
+KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"

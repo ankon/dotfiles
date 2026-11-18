@@ -100,6 +100,7 @@ install_linux() {
 		btop \
 		colordiff \
 		cmake \
+		ddcutil \
 		fastfetch \
 		fontconfig \
 		gcc \
@@ -256,6 +257,15 @@ EOF
 	for f in "$PWD/etc.Linux/tmpfiles.d/*"; do
 		sudo ln -sf "$f" "/etc/tmpfiles.d/$(basename $f)"
 	done
+
+	sudo groupadd --system i2c
+	sudo usermod -aG i2c $USER
+
+	# Configure udev rules
+	for f in "$PWD/etc.Linux/udev/rules.d/*"; do
+		sudo ln -sf "$f" "/etc/udev/rules.d/$(basename $f)"
+	done
+	sudo udevadm trigger
 
 	# Install services to configure system-dependent things
 	for f in $(find "$PWD/etc.Linux/systemd/system" "$PWD/etc.Linux.${MACHINE}/systemd/system" -type f 2>/dev/null); do

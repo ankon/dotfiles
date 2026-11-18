@@ -25,6 +25,8 @@
         "clock",
         "custom/sunset",
         "custom/toggle-theme",
+        "custom/brightness-sam",
+        "custom/brightness-lg",
         "tray"
     ],
     // Modules configuration
@@ -191,6 +193,27 @@
         // See https://github.com/manjaro-sway/desktop-settings/blob/sway/community/sway/usr/bin/waybar-signal for inspiration,
         // the adapted sunset.sh hardcodes this one.
         "signal": 6
+    },
+    "custom/brightness-sam": {
+        "exec": "$HOME/.config/waybar/brightness.sh 1 get",
+        "format": "🖥 {}",
+        "on-right-click": "pkill -SIGRTMIN+8 waybar",
+        // Display will ignore commands, and eventually restart when too many get issued.
+        // "on-scroll-up": "$HOME/.config/waybar/brightness.sh 1 up; pkill -SIGRTMIN+8 waybar",
+        // "on-scroll-down": "$HOME/.config/waybar/brightness.sh 1 down; pkill -SIGRTMIN+8 waybar",
+        "interval": 30,
+        "signal": 8,
+        "tooltip-format": "Samsung LS24D60xU"
+    },
+    "custom/brightness-lg": {
+        "exec": "$HOME/.config/waybar/brightness.sh 9 get",
+        "format": "🖥 {}",
+        "on-right-click": "pkill -SIGRTMIN+8 waybar",
+        "on-scroll-up": "$HOME/.config/waybar/brightness.sh 9 up; pkill -SIGRTMIN+8 waybar",
+        "on-scroll-down": "$HOME/.config/waybar/brightness.sh 9 down; pkill -SIGRTMIN+8 waybar",
+        "interval": 30,
+        "signal": 8,
+        "tooltip-format": "LG UltraFine 4K"
     },
     "custom/toggle-theme": {
         "interval": "once",
